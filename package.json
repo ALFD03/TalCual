@@ -15,8 +15,8 @@
   "type": "commonjs",
   "main": "api/products/index.js",
   "scripts": {
-    "dev": "vercel dev",
-    "deploy": "vercel --prod",
+    "dev": "serve frontend -l 3000 --cors",
+    "dev:full": "serve frontend -l 3000 --cors & npx vercel dev --listen 3001",
     "db:seed": "node db/seed.js",
     "test": "echo \"No tests yet\" && exit 0"
   },
@@ -28,6 +28,6 @@
   },
   "devDependencies": {
     "dotenv": "^17.4.2",
-    "vercel": "^58.1.0"
+    "serve": "^14.2.6"
   }
 }
