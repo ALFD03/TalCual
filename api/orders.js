@@ -1,35 +1,32 @@
-const { sql } = require('../lib/db');
-const { requireAuth } = require('../lib/auth');
+const { query } = require('../lib/db');
 
 module.exports = async (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  if (req.method === 'POST') return createOrder(req, res);
-  if (req.method === 'GET') return requireAuth(listOrders)(req, res);
-  res.status(405).json({ error: 'Method not allowed' });
-};
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
-async function createOrder(req, res) {
+  if (req.method === 'OPTIONS') return res.status(200).end();
+
   try {
-    const { items, total, count, customer } = req.body || {};
-    if (!items || !Array.isArray(items) || items.length === 0) {
-      return res.status(400).json({ error: 'El pedido debe contener al menos un artículo' });
+    if (req.method === 'POST') {
+      const { customer_name, customer_phone, items, total } = req.body || {};
+
+      if (!customer_name || !items || !items.length) {
+        return res.status(400).json({ success: false, message: 'Datos incompletos para la orden' });
+      }
+
+      const result = await query(
+        `INSERT INTO orders (customer_name, customer_phone, items, total, status) 
+         VALUES ($1, $2, $3, $4, 'pending') RETURNING *`,
+        [customer_name, customer_phone || '', JSON.stringify(items), total || 0]
+      );
+
+      return res.status(201).json({ success: true, data: result.rows[0] });
     }
-    const result = await sql`
-      INSERT INTO orders (customer_name, customer_note, items, total, item_count)
-      VALUES (${customer?.name || ''}, ${customer?.note || ''}, ${JSON.stringify(items)}, ${Number(total) || 0}, ${Number(count) || items.length})
-      RETURNING id, created_at
-    `;
-    res.status(201).json({ ok: true, id: result[0].id });
-  } catch (err) {
-    res.status(500).json({ error: 'Error al crear pedido' });
-  }
-}
 
-async function listOrders(req, res) {
-  try {
-    const rows = await sql`SELECT id, customer_name, customer_note, items, total, item_count, status, created_at FROM orders ORDER BY created_at DESC LIMIT 50`;
-    res.json({ data: rows });
-  } catch (err) {
-    res.status(500).json({ error: 'Error al cargar pedidos' });
+    return res.status(405).json({ success: false, message: 'Método no permitido' });
+  } catch (error) {
+    console.error('Error en orders:', error);
+    return res.status(500).json({ success: false, message: 'Error interno' });
   }
-}
+};

@@ -1,8 +1,17 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "git": { "deploymentEnabled": { "Referencia": false } },
   "rewrites": [
+    { "source": "/api/categories", "destination": "/api/meta?type=categories" },
+    { "source": "/api/conditions", "destination": "/api/meta?type=conditions" },
+    { "source": "/api/config", "destination": "/api/meta?type=config" },
+    { "source": "/api/auth/login", "destination": "/api/auth?action=login" },
+    { "source": "/api/auth/me", "destination": "/api/auth?action=me" },
+    { "source": "/api/admin/products/:id", "destination": "/api/admin-products?id=:id" },
+    { "source": "/api/admin/products", "destination": "/api/admin-products" },
+    { "source": "/api/admin/users/:id", "destination": "/api/admin-users?id=:id" },
+    { "source": "/api/admin/users", "destination": "/api/admin-users" },
+    { "source": "/api/products/:id", "destination": "/api/products?id=:id" },
     { "source": "/catalogo", "destination": "/frontend/pages/catalogo.html" },
     { "source": "/vender", "destination": "/frontend/pages/vender.html" },
     { "source": "/nosotros", "destination": "/frontend/pages/nosotros.html" },

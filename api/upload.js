@@ -1,31 +1,27 @@
-const { requireAuth } = require('../lib/auth');
-const { uploadFile } = require('../lib/blob');
+const { put } = require('@vercel/blob');
 
 module.exports = async (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  return requireAuth(async (req, res) => {
-    if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
-    try {
-      const { pipeline } = require('stream');
-      const { promisify } = require('util');
-      const pipelineAsync = promisify(pipeline);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
-      const buffers = [];
-      for await (const chunk of req) buffers.push(chunk);
-      const buffer = Buffer.concat(buffers);
+  if (req.method === 'OPTIONS') return res.status(200).end();
 
-      // Parse multipart manually (simplified - in production use formidable/multer)
-      const contentType = req.headers['content-type'] || '';
-      if (!contentType.includes('multipart/form-data')) {
-        return res.status(400).json({ error: 'Se requiere multipart/form-data' });
-      }
+  if (req.method !== 'POST') {
+    return res.status(405).json({ success: false, message: 'Método no permitido' });
+  }
 
-      const file = { buffer, originalname: 'upload.jpg', mimetype: 'image/jpeg' };
-      const folder = req.query.folder || 'products';
-      const url = await uploadFile(buffer, file.originalname || 'image.jpg', folder);
-      res.json({ url });
-    } catch (err) {
-      res.status(500).json({ error: 'Error al subir archivo' });
-    }
-  })(req, res);
+  try {
+    const filename = req.query.filename || `product-${Date.now()}.jpg`;
+    
+    // Subida directa a Vercel Blob
+    const blob = await put(filename, req, {
+      access: 'public',
+    });
+
+    return res.status(200).json({ success: true, url: blob.url });
+  } catch (error) {
+    console.error('Error en upload Vercel Blob:', error);
+    return res.status(500).json({ success: false, message: 'Error subiendo archivo' });
+  }
 };
