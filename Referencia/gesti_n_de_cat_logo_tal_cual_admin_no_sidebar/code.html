@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TAL CUAL Admin - Catálogo</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Playfair+Display:ital@0;1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#ffffff",
+                      "primary-container": "#5c7a38",
+                      "secondary": "#475e89",
+                      "primary": "#446122",
+                      "surface-variant": "#e3e3da",
+                      "surface": "#fafaf1",
+                      "surface-bright": "#fafaf1",
+                      "on-secondary-fixed-variant": "#2f4770",
+                      "surface-container": "#eeeee5",
+                      "on-background": "#1a1c17",
+                      "cta-terracotta": "#D97328",
+                      "on-primary": "#ffffff",
+                      "on-surface-variant": "#44483c",
+                      "outline": "#74796b",
+                      "tertiary-container": "#9a5d8b",
+                      "surface-tint": "#4a6727",
+                      "on-tertiary-fixed-variant": "#6a335e",
+                      "whatsapp-green": "#25D366",
+                      "text-dark": "#1E242B",
+                      "error": "#ba1a1a",
+                      "on-error-container": "#93000a",
+                      "surface-container-high": "#e9e9e0",
+                      "error-container": "#ffdad6",
+                      "inverse-primary": "#afd185",
+                      "secondary-fixed": "#d7e2ff",
+                      "primary-fixed-dim": "#afd185",
+                      "on-primary-container": "#e7ffc6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed": "#102000",
+                      "surface-container-highest": "#e3e3da",
+                      "on-primary-fixed-variant": "#334e11",
+                      "on-error": "#ffffff",
+                      "secondary-fixed-dim": "#afc7f8",
+                      "surface-dim": "#dadbd2",
+                      "tertiary-fixed-dim": "#f8b0e3",
+                      "background": "#fafaf1",
+                      "tertiary-fixed": "#ffd7f1",
+                      "outline-variant": "#c4c8b8",
+                      "on-secondary-container": "#3f5681",
+                      "on-tertiary-container": "#fff4f8",
+                      "surface-container-low": "#f4f4eb",
+                      "on-tertiary-fixed": "#370530",
+                      "on-secondary": "#ffffff",
+                      "text-muted": "#6C757D",
+                      "primary-fixed": "#cbee9f",
+                      "inverse-surface": "#2f312b",
+                      "secondary-container": "#b5ccfe",
+                      "on-secondary-fixed": "#001b3f",
+                      "on-surface": "#1a1c17",
+                      "bg-cream": "#F5F1E8",
+                      "tertiary": "#7e4571",
+                      "inverse-on-surface": "#f1f1e8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "16px",
+                      "section-gap": "80px",
+                      "margin-desktop": "64px",
+                      "margin-mobile": "16px",
+                      "stack-sm": "8px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-sm": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "accent-quote": [
+                              "Playfair Display"
+                      ]
+              },
+              "fontSize": {
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "accent-quote": [
+                              "20px",
+                              {
+                                      "lineHeight": "30px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .soft-shadow {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-inverse-surface shadow-sm font-headline-sm text-headline-sm font-body-md text-body-md flex justify-between items-center px-margin-desktop py-4 w-full max-w-full sticky top-0 z-50">
+<div class="flex items-center gap-gutter">
+<img alt="TAL CUAL Logo" class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqC6MTy-UyKULfdxBtFznn3z4z3RGFs-brlS2LmTvIZCVYijvRplfVIt7lAQowS7pszSTx02tSMl4hD8VhsoSZbQ6S3rnfCDNT4xAnV9_ri5_ac4zauq0e77xUQKOBuh6MYParbwPg5HdUAZxXp30bazbA3ShibWPBY3s5XjJaYWXHU2zCFcktKkTMdbYaPkBQ7R9AeAkvkylW5AlHfsCvklS_9ATBakVMtL3bGDhQ_A2Ik3tKzQ_-Lh8f37M1qHUJiVCmA9OV2i4N"/>
+<nav class="hidden md:flex items-center gap-stack-md ml-margin-desktop">
+<a class="text-on-surface-variant dark:text-outline-variant pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors active:opacity-80 transition-all" href="#">Dashboard</a>
+<a class="text-primary dark:text-inverse-primary border-b-2 border-primary font-bold pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors active:opacity-80 transition-all" href="#">Catálogo</a>
+<a class="text-on-surface-variant dark:text-outline-variant pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors active:opacity-80 transition-all" href="#">Nuevo Producto</a>
+<a class="text-on-surface-variant dark:text-outline-variant pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors active:opacity-80 transition-all" href="#">Reportes</a>
+</nav>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="Administrador" class="w-10 h-10 rounded-full object-cover border-2 border-surface-container-highest" data-alt="A professional headshot of a business administrator in a modern office setting. Warm, natural lighting, high-quality portrait photography, slightly blurred background, approachable yet professional demeanor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYujl4rtbcXq0c3lUh34SE9NgKe8xxuB_dXBMGq_dt57M6iZMWLdgaHEeoZQZ8Gy08jw5tqZM0tHeOKpT-lp9yM9HDlQdMnDXfckCsGZjY-Sn6RHgC_8TSyQuNNdJaE4WP15o5xiR55kO71IwWcD11urfmO1oLTJ5Y17phc3a9h8V19Ehg8m0He1YU-TFbpAxunzRjWw6tPc3j66C4F2qcwZgIKzXOrMGs0aEoPe-c7iy7AwG2WMqjUbYpLARooI6YTmdjs5EaFHAo"/>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow px-margin-mobile md:px-margin-desktop py-section-gap">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
+<div>
+<h1 class="font-display-lg text-display-lg text-secondary mb-2">Gestión de Catálogo</h1>
+<p class="text-text-muted">Administra el inventario, actualiza precios y revisa las nuevas oportunidades.</p>
+</div>
+<div class="flex gap-4 w-full md:w-auto">
+<button class="bg-primary hover:bg-primary-container text-on-primary px-6 py-3 rounded-full font-label-md text-label-md transition-all flex items-center justify-center gap-2 whitespace-nowrap shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+                    Nuevo Producto
+                </button>
+</div>
+</div>
+<!-- Filters & Tools -->
+<div class="bg-surface-container-lowest rounded-xl p-4 soft-shadow mb-8 flex flex-wrap gap-4 items-center justify-between border border-surface-container-high">
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md transition-colors">Todos</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-low font-label-md text-label-md transition-colors">Muebles</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-low font-label-md text-label-md transition-colors">Decoración</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant hover:bg-surface-container-low font-label-md text-label-md transition-colors">Arte</button>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-text-muted font-label-md text-label-md">
+<span class="material-symbols-outlined">filter_list</span>
+                    Filtrar por:
+                </div>
+<select class="rounded-lg border-outline-variant bg-surface-container-lowest text-on-surface py-2 pl-3 pr-8 focus:ring-primary focus:border-primary">
+<option>Más recientes</option>
+<option>Precio: Mayor a Menor</option>
+<option>Precio: Menor a Mayor</option>
+<option>Estado: Excelente</option>
+</select>
+</div>
+</div>
+<!-- Inventory Table (Bento/Card Hybrid for better UI) -->
+<div class="bg-surface-container-lowest rounded-2xl soft-shadow overflow-hidden border border-surface-container-high">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-label-md text-label-md uppercase tracking-wider">
+<th class="p-4 font-semibold w-24">Imagen</th>
+<th class="p-4 font-semibold">Producto</th>
+<th class="p-4 font-semibold">Categoría</th>
+<th class="p-4 font-semibold">Precio</th>
+<th class="p-4 font-semibold">Estado</th>
+<th class="p-4 font-semibold text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high">
+<!-- Row 1 -->
+<tr class="hover:bg-surface transition-colors group">
+<td class="p-4">
+<img alt="Silla Mid-Century" class="w-16 h-16 rounded-lg object-cover shadow-sm" data-alt="A beautifully restored mid-century modern teak wood armchair, positioned elegantly against a clean white studio background. Soft, even studio lighting highlights the rich wood grain and the new textured cream upholstery. High-end product photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs2QcD26St-6FtX1PTroAG7zvovfkoDiwVc_gDDXpJBlGWv77_1e9k1iks4WAy63IjNUznzDI-6tVvXNUYKXj-T91Cg2jGrqpA9gl7aY-auJStdRzbdmJEkQSjlwONrtRiAhI8j7hU7HsG0HNJejN6w0A9udIsh4wTLSv1_568JHX6dZoUx0Zcgd2cWDsSLDvH3bnI582YKTBn-hQtc4c3Vf0VeLiXtEolJZWLXKQHRkV_9Gp_hmnug5_rL2p8Pj94FGzfYLVsjPEF"/>
+</td>
+<td class="p-4">
+<div class="font-headline-sm text-body-md font-semibold text-secondary mb-1">Sillón Mid-Century Teca</div>
+<div class="text-text-muted text-sm">Ref: TC-8492</div>
+</td>
+<td class="p-4">
+<span class="px-3 py-1 bg-surface-container rounded-full text-on-surface-variant font-label-md text-xs">Muebles</span>
+</td>
+<td class="p-4 font-semibold text-primary">$450.000</td>
+<td class="p-4">
+<span class="px-3 py-1 bg-[#e7ffc6] text-[#334e11] rounded-full font-label-md text-xs border border-[#afd185]">Excelente</span>
+</td>
+<td class="p-4 text-right">
+<button class="text-text-muted hover:text-secondary p-2 transition-colors rounded-full hover:bg-surface-container-low" title="Editar">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="text-text-muted hover:text-error p-2 transition-colors rounded-full hover:bg-error-container" title="Eliminar">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface transition-colors group">
+<td class="p-4">
+<img alt="Lámpara Vintage" class="w-16 h-16 rounded-lg object-cover shadow-sm" data-alt="A vintage brass table lamp with a soft linen shade, resting on a smooth marble surface. Warm, ambient lighting casts gentle shadows. The style is sophisticated, highlighting the patina of the brass. Elegant retail product shot." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9ZD8ENFi0KzQfhzxfZO1dYSYFgRF7f1x5k4sZPEEwHcSygDes_7pWvKkrQD4pOeLPM6RHcvFaui_CgXdjUI5Y17csBk2bIhHyhc3u_Il10plbhQ00cv5fOBQ4mBgHGwF7JyqhnxnLUyd5_i-lR2XWt44dNrEpWDrkFd3E4X-IVHs3C298xTwg2-baLkjtW7QNne4sUiKCVfsiElpY8xPn249IKkoS8L0RiETEmON2OgNbXbSaCzCj5MoUycmZTbxVG781zlriNsYC"/>
+</td>
+<td class="p-4">
+<div class="font-headline-sm text-body-md font-semibold text-secondary mb-1">Lámpara de Mesa Bronce</div>
+<div class="text-text-muted text-sm">Ref: TC-8493</div>
+</td>
+<td class="p-4">
+<span class="px-3 py-1 bg-surface-container rounded-full text-on-surface-variant font-label-md text-xs">Iluminación</span>
+</td>
+<td class="p-4 font-semibold text-primary">$120.000</td>
+<td class="p-4">
+<span class="px-3 py-1 bg-surface-variant text-on-surface-variant rounded-full font-label-md text-xs border border-outline-variant">Bueno</span>
+</td>
+<td class="p-4 text-right">
+<button class="text-text-muted hover:text-secondary p-2 transition-colors rounded-full hover:bg-surface-container-low" title="Editar">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="text-text-muted hover:text-error p-2 transition-colors rounded-full hover:bg-error-container" title="Eliminar">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface transition-colors group">
+<td class="p-4">
+<img alt="Jarrones Cerámica" class="w-16 h-16 rounded-lg object-cover shadow-sm" data-alt="A set of three handmade ceramic vases in varying earthy tones (terracotta, olive, and cream), arranged asymmetrically. Clean, bright studio lighting. Minimalist and organic aesthetic. High-resolution lifestyle product imagery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMJG2ZR6qF_zDtTiscf8hAH-q3olZxFxV__xDjlKNueSQDd5CeYTOKTAMSatbvuKnm67Qs-T6cKVoVdj1zJGzdRWTUyPtmVKl8lK8ZIvoFV-MpHf1LRHHCfFLpGtUQTGKG_f5CkgYAUFyWB0BrAwuXC8BrBLSwnV8-fEpTlWJwrsGQCHKjr3HNbQsKpPL0pMpzAilE0sGNM1xKysawr7cOGudlIz7vIJC5FR1iBKcNd0Q56lDWp3zn2m-U3XqO-2kWW3FCngJ1W5-J"/>
+</td>
+<td class="p-4">
+<div class="font-headline-sm text-body-md font-semibold text-secondary mb-1">Set Jarrones Cerámica Artesanal</div>
+<div class="text-text-muted text-sm">Ref: TC-8494</div>
+</td>
+<td class="p-4">
+<span class="px-3 py-1 bg-surface-container rounded-full text-on-surface-variant font-label-md text-xs">Decoración</span>
+</td>
+<td class="p-4 font-semibold text-primary">$85.000</td>
+<td class="p-4">
+<span class="px-3 py-1 bg-[#e7ffc6] text-[#334e11] rounded-full font-label-md text-xs border border-[#afd185]">Como Nuevo</span>
+</td>
+<td class="p-4 text-right">
+<button class="text-text-muted hover:text-secondary p-2 transition-colors rounded-full hover:bg-surface-container-low" title="Editar">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="text-text-muted hover:text-error p-2 transition-colors rounded-full hover:bg-error-container" title="Eliminar">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="bg-surface-container-low p-4 border-t border-surface-container-high flex flex-col sm:flex-row justify-between items-center gap-4">
+<div class="text-sm text-text-muted">
+                    Mostrando <span class="font-semibold text-on-surface">1</span> a <span class="font-semibold text-on-surface">3</span> de <span class="font-semibold text-on-surface">142</span> productos
+                </div>
+<div class="flex items-center gap-1">
+<button class="p-2 rounded-lg text-text-muted hover:bg-surface-container hover:text-secondary disabled:opacity-50 transition-colors" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary font-label-md flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant font-label-md flex items-center justify-center transition-colors">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant font-label-md flex items-center justify-center transition-colors">3</button>
+<span class="text-text-muted px-2">...</span>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant font-label-md flex items-center justify-center transition-colors">12</button>
+<button class="p-2 rounded-lg text-text-muted hover:bg-surface-container hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-dim font-label-md text-label-md flex flex-col md:flex-row justify-between items-center px-margin-desktop py-stack-md w-full mt-auto">
+<div class="font-headline-sm text-headline-sm text-primary mb-4 md:mb-0">
+            TAL CUAL Admin
+        </div>
+<div class="text-on-surface-variant dark:text-outline-variant mb-4 md:mb-0 text-center md:text-left">
+            © 2024 TAL CUAL Store - Gestión Circular. Todos los derechos reservados.
+        </div>
+<nav class="flex gap-stack-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Soporte Técnico</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Manual de Usuario</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Privacidad</a>
+</nav>
+</footer>
+</body></html>

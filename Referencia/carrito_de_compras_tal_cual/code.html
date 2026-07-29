@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TAL CUAL - Carrito de Compras</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Playfair+Display:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed-variant": "#2f4770",
+                      "on-secondary": "#ffffff",
+                      "surface-variant": "#e3e3da",
+                      "tertiary": "#7e4571",
+                      "bg-cream": "#F5F1E8",
+                      "on-primary-container": "#e7ffc6",
+                      "surface-container": "#eeeee5",
+                      "surface-dim": "#dadbd2",
+                      "whatsapp-green": "#25D366",
+                      "text-dark": "#1E242B",
+                      "on-tertiary-container": "#fff4f8",
+                      "on-error-container": "#93000a",
+                      "on-primary": "#ffffff",
+                      "secondary-container": "#b5ccfe",
+                      "background": "#fafaf1",
+                      "on-surface-variant": "#44483c",
+                      "outline": "#74796b",
+                      "inverse-surface": "#2f312b",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "cta-terracotta": "#D97328",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed-variant": "#6a335e",
+                      "surface-tint": "#4a6727",
+                      "surface": "#fafaf1",
+                      "outline-variant": "#c4c8b8",
+                      "surface-container-highest": "#e3e3da",
+                      "inverse-on-surface": "#f1f1e8",
+                      "primary-fixed": "#cbee9f",
+                      "on-primary-fixed-variant": "#334e11",
+                      "text-muted": "#6C757D",
+                      "surface-bright": "#fafaf1",
+                      "primary": "#446122",
+                      "primary-container": "#5c7a38",
+                      "secondary-fixed-dim": "#afc7f8",
+                      "inverse-primary": "#afd185",
+                      "on-secondary-container": "#3f5681",
+                      "surface-container-high": "#e9e9e0",
+                      "primary-fixed-dim": "#afd185",
+                      "on-tertiary-fixed": "#370530",
+                      "on-background": "#1a1c17",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#d7e2ff",
+                      "surface-container-low": "#f4f4eb",
+                      "secondary": "#475e89",
+                      "tertiary-fixed-dim": "#f8b0e3",
+                      "tertiary-fixed": "#ffd7f1",
+                      "on-primary-fixed": "#102000",
+                      "tertiary-container": "#9a5d8b",
+                      "on-secondary-fixed": "#001b3f",
+                      "on-surface": "#1a1c17"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "stack-sm": "8px",
+                      "margin-desktop": "64px",
+                      "gutter": "24px",
+                      "stack-md": "16px",
+                      "section-gap": "80px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-sm": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "accent-quote": [
+                              "Playfair Display"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "accent-quote": [
+                              "20px",
+                              {
+                                      "lineHeight": "30px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+      </style>
+</head>
+<body class="bg-background dark:bg-background text-on-background min-h-screen font-body-md overflow-hidden flex">
+<!-- Top Navigation Area (Blurred to show context) -->
+<div class="flex-1 transition-all duration-300 pointer-events-none opacity-50 filter blur-sm">
+<header class="bg-background dark:bg-background shadow-sm docked full-width top-0 z-40 sticky">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<span class="font-display-lg text-display-lg-mobile md:text-display-lg font-bold text-on-background tracking-tight">TAL CUAL</span>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-200" href="#">Ropa</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-200" href="#">Muebles</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-200" href="#">Zapatos</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-200" href="#">Libros</a>
+</nav>
+<div class="flex items-center gap-4 text-primary">
+<button class="p-2 rounded-full hover:bg-surface-variant transition-colors duration-200">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 rounded-full bg-primary-container text-on-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-variant transition-colors duration-200">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="p-8">
+<div class="h-96 bg-surface-container-low rounded-xl mb-8 flex items-center justify-center">
+<p class="text-on-surface-variant font-headline-sm">Main Content Canvas</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="h-64 bg-surface-container-low rounded-xl"></div>
+<div class="h-64 bg-surface-container-low rounded-xl"></div>
+<div class="h-64 bg-surface-container-low rounded-xl"></div>
+<div class="h-64 bg-surface-container-low rounded-xl"></div>
+</div>
+</main>
+</div>
+<!-- Backdrop for Drawer -->
+<div class="fixed inset-0 bg-black/30 z-50 transition-opacity"></div>
+<!-- Cart Drawer (Slide-over) -->
+<aside class="fixed inset-y-0 right-0 z-50 w-full md:w-[420px] bg-bg-cream shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-0 border-l border-outline-variant">
+<!-- Drawer Header -->
+<div class="px-6 py-5 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+<h2 class="font-headline-sm text-headline-sm text-on-background">Tu Oportunidad</h2>
+<span class="bg-primary-container text-on-primary-container font-label-md text-label-md py-0.5 px-2.5 rounded-full">3</span>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-error hover:bg-error-container rounded-full transition-colors group">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Drawer Content (Scrollable) -->
+<div class="flex-1 overflow-y-auto p-6 flex flex-col gap-6">
+<!-- Items List -->
+<div class="flex flex-col gap-4">
+<!-- Item 1: Mueble -->
+<div class="flex gap-4 p-4 bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-transparent hover:border-outline-variant transition-colors group relative">
+<div class="w-24 h-24 rounded-lg bg-surface-variant overflow-hidden shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="A modern, minimalist beige armchair in excellent condition, well lit against a soft cream background, perfect for a chic living room. Warm corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPoKATuvFCFeWEOYxnn_csVQPxpbVElJtrxlzKNOPyYJ0d6BPefrd62y5XBs4NFzbINkFGXDkoqWf9XjObr4RJFOdVFtErpziYrgqlXcmzqFDolYPxZPklD9nuvuHVxJ3fVNAsXOBKXak0ey2DPiu8QGajIJVO_JLFcXDd57JeZDgpvJnHbH6IHcK38YW7bzjnJL76SFvm0aqx69M1WS2ApztGLAfV00IOEU0P5cD1aso68y6GnGWur7kNeJTV8G4Hbz6RO2AT7eSI"/>
+<div class="absolute top-0 right-0 bg-secondary text-on-secondary text-[10px] font-bold px-2 py-1 rounded-bl-lg rounded-tr-lg tracking-wider">COMO NUEVO</div>
+</div>
+<div class="flex flex-col justify-between flex-1">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-secondary">Sillón Minimalista Beige</h3>
+<button class="text-outline hover:text-error transition-colors p-1 -mr-2 -mt-2">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-primary font-semibold mt-1">$45.00</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center bg-surface-container-low rounded-full border border-outline-variant">
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<span class="w-6 text-center font-label-md text-label-md">1</span>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2: Zapatos -->
+<div class="flex gap-4 p-4 bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-transparent hover:border-outline-variant transition-colors group relative">
+<div class="w-24 h-24 rounded-lg bg-surface-variant overflow-hidden shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="A pair of clean, gently used white casual sneakers, displayed attractively against a clean background. Focus on texture and quality. Modern organic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWRfKxrawF8cr0TbHYD6zxVSP3_1x7WDvc9EmUrrHXPTOL00J2W0W_av9JaFsbxEtv55gfXW810-oqLOYbIJA_Vb0Yr2MN0CWn_BK42R6iDSU49IhrVNe0WpTM9blwH_JyTPZ6l2orWOVJpDDqmHQ5ZwEMBct776H2AYPxC8ru0P_4jERUTIkObIRK51QPJj5At05Dcd55rdPcnhXgndY2u0BQts2T8qpJvttgqepl-4ALKguiJ18rjUVn1XbsqN6n5cN_Y-KfqnLA"/>
+<div class="absolute top-0 right-0 bg-outline text-on-primary text-[10px] font-bold px-2 py-1 rounded-bl-lg rounded-tr-lg tracking-wider">SEGUNDA MANO</div>
+</div>
+<div class="flex flex-col justify-between flex-1">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-secondary">Zapatos Casuales Blancos</h3>
+<button class="text-outline hover:text-error transition-colors p-1 -mr-2 -mt-2">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-primary font-semibold mt-1">$15.00</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center bg-surface-container-low rounded-full border border-outline-variant">
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<span class="w-6 text-center font-label-md text-label-md">1</span>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 3: Blusa -->
+<div class="flex gap-4 p-4 bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-transparent hover:border-outline-variant transition-colors group relative">
+<div class="w-24 h-24 rounded-lg bg-surface-variant overflow-hidden shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="A brand new, elegant silk blouse in a soft terracotta color, hanging neatly. Tag still attached. Warm lighting, premium retail presentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwY9IMFdofhS3D-Qy3Ng27FioLRPmn8bhQIJ_fmWgMKaNiCKwRtZXa9cLcbmApxT_0AaaQGLq_mr9v_3l_GU9DBQvH0AS4ChWBSFzRtoJm4-sBm0v042GH7aK-msIPzocofoinWt4w2_yoE9QxfJ6AKHNO1lI-YaDOaxUKgzS17QBTmkBjU5_g_iB99jxLXLhp7-CH2_-imIK8HQdfJ--0nl5Y_unX4zwkQI4YoM6ro4x0lA69vVMb9IEVcRAILQGz7dAmopwBt-ri"/>
+<div class="absolute top-0 right-0 bg-cta-terracotta text-on-primary text-[10px] font-bold px-2 py-1 rounded-bl-lg rounded-tr-lg tracking-wider">NUEVO</div>
+</div>
+<div class="flex flex-col justify-between flex-1">
+<div>
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-secondary">Blusa de Seda Terracota</h3>
+<button class="text-outline hover:text-error transition-colors p-1 -mr-2 -mt-2">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-primary font-semibold mt-1">$22.00</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center bg-surface-container-low rounded-full border border-outline-variant">
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<span class="w-6 text-center font-label-md text-label-md">2</span>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Customer Details Form -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] space-y-4 border border-outline-variant/30">
+<h4 class="font-label-md text-label-md text-secondary border-b border-outline-variant pb-2">Datos para el pedido</h4>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1" for="customerName">Nombre del Cliente</label>
+<input class="w-full bg-surface-container-low border border-outline-variant text-on-background rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-shadow font-body-md text-body-md" id="customerName" placeholder="Ej: María Pérez" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1" for="orderNote">Nota sobre el pedido (Opcional)</label>
+<textarea class="w-full bg-surface-container-low border border-outline-variant text-on-background rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-shadow font-body-md text-body-md resize-none" id="orderNote" placeholder="Tallas, colores específicos o dudas..." rows="2"></textarea>
+</div>
+</div>
+</div>
+<!-- Drawer Footer (Sticky) -->
+<div class="p-6 bg-surface-container-lowest border-t border-outline-variant shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+<!-- Summary -->
+<div class="space-y-2 mb-6">
+<div class="flex justify-between text-on-surface-variant font-body-md text-body-md">
+<span>Subtotal (4 artículos)</span>
+<span>$104.00</span>
+</div>
+<div class="flex justify-between text-on-surface-variant font-body-md text-body-md">
+<span>Costo de envío estimado</span>
+<span class="text-text-muted text-sm italic">A coordinar</span>
+</div>
+<div class="border-t border-outline-variant pt-3 mt-3 flex justify-between items-end">
+<span class="font-headline-sm text-headline-sm text-secondary">Total</span>
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary font-bold">$104.00</span>
+</div>
+</div>
+<!-- CTA Button -->
+<button class="w-full bg-whatsapp-green hover:bg-[#20bd5a] text-white rounded-full py-4 px-6 flex items-center justify-center gap-3 transition-transform hover:scale-[0.98] active:scale-95 shadow-lg">
+<svg fill="currentColor" height="24" viewbox="0 0 16 16" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"></path>
+</svg>
+<span class="font-label-md text-label-md text-white">Confirmar Pedido por WhatsApp</span>
+</button>
+<p class="text-center text-text-muted font-body-md text-xs mt-4 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[14px]">info</span>
+                Al presionar serás redirigido para coordinar pago y entrega.
+            </p>
+</div>
+</aside>
+</body></html>

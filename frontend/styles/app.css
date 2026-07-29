@@ -1,0 +1,29 @@
+/* ============================================================
+   TAL CUAL · Estilos específicos de la aplicación
+   ============================================================ */
+
+body { background: var(--tc-bg-cream); }
+
+/* Hero image placeholder correction */
+.hero__bg img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Fix for grid-info grid on nosotros page */
+.grid-info { display: grid; grid-template-columns: 1fr; gap: var(--tc-gutter); }
+@media (min-width: 1024px) { .grid-info { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1280px) { .grid-info { grid-template-columns: 1.2fr 0.8fr; } }
+
+/* Custom scrollbar for cart drawer */
+.drawer__body::-webkit-scrollbar { width: 6px; }
+.drawer__body::-webkit-scrollbar-track { background: transparent; }
+.drawer__body::-webkit-scrollbar-thumb { background: var(--tc-outline-variant); border-radius: 4px; }
+
+/* Pill filter responsive center */
+.pill { display: inline-flex; }
+
+/* Toast improvements */
+.toast { white-space: nowrap; }
+
+/* Fix for bottom nav gap on mobile */
+@media (max-width: 767px) {
+  body { padding-bottom: 72px; }
+}
