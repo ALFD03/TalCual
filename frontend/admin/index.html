@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - TAL CUAL Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/frontend/styles/tokens.css" />
+  <link rel="stylesheet" href="/frontend/styles/base.css" />
+  <link rel="stylesheet" href="/frontend/styles/components.css" />
+  <link rel="stylesheet" href="/frontend/styles/admin.css" />
+</head>
+<body class="admin-body">
+  <admin-topbar data-page="dashboard"></admin-topbar>
+  <main class="admin-main">
+    <div class="section-heading" style="margin-bottom: var(--tc-sp-xl); text-align: left;">
+      <h2>Dashboard</h2>
+      <p>Resumen de la tienda TAL CUAL</p>
+    </div>
+    <div class="stat-grid" id="statsGrid">
+      <div class="stat-card"><span class="stat-card__icon material-symbols-outlined">inventory_2</span><p class="stat-card__label">Productos</p><p class="stat-card__value" id="statProducts">-</p></div>
+      <div class="stat-card" style="border-top-color: var(--tc-secondary);"><span class="stat-card__icon material-symbols-outlined" style="color: var(--tc-secondary);">shopping_bag</span><p class="stat-card__label">Pedidos</p><p class="stat-card__value" id="statOrders">-</p></div>
+      <div class="stat-card" style="border-top-color: var(--tc-cta);"><span class="stat-card__icon material-symbols-outlined" style="color: var(--tc-cta);">people</span><p class="stat-card__label">Usuarios Admin</p><p class="stat-card__value" id="statUsers">-</p></div>
+      <div class="stat-card" style="border-top-color: var(--tc-whatsapp);"><span class="stat-card__icon material-symbols-outlined" style="color: var(--tc-whatsapp);">payments</span><p class="stat-card__label">Ventas totales</p><p class="stat-card__value" id="statSales">$0</p></div>
+    </div>
+  </main>
+  <script type="module" src="/frontend/scripts/admin.js"></script>
+</body>
+</html>

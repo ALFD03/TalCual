@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editar Usuario - TAL CUAL Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/frontend/styles/tokens.css" />
+  <link rel="stylesheet" href="/frontend/styles/base.css" />
+  <link rel="stylesheet" href="/frontend/styles/components.css" />
+  <link rel="stylesheet" href="/frontend/styles/admin.css" />
+</head>
+<body class="admin-body">
+  <admin-topbar data-page="usuarios"></admin-topbar>
+  <main class="admin-main">
+    <div style="max-width: 600px; margin-inline: auto;">
+      <div style="margin-bottom: var(--tc-sp-lg);">
+        <h1>Editar Usuario</h1>
+        <p style="color: var(--tc-text-muted);">Actualiza la información del empleado en el sistema.</p>
+      </div>
+      <form id="userEditForm" class="admin-card stack-lg">
+        <div class="field"><label class="field__label">Nombre Completo</label><input class="input" id="editUserName" required /></div>
+        <div class="field"><label class="field__label">Correo Electrónico</label><input class="input" id="editUserEmail" type="email" required /></div>
+        <div class="field"><label class="field__label">Rol</label><select class="select" id="editUserRole"><option value="editor">Editor</option><option value="admin">Administrador</option><option value="viewer">Visualizador</option></select></div>
+        <div class="field"><label class="field__label">Contraseña <span style="color: var(--tc-text-muted); font-weight:400;">(dejar en blanco para mantener)</span></label><input class="input" id="editUserPassword" type="password" placeholder="Nueva contraseña..." /></div>
+        <div class="form-actions">
+          <a href="/admin/usuarios" class="btn btn-ghost">Cancelar</a>
+          <button class="btn btn-cta" type="submit"><span class="material-symbols-outlined">save</span> Guardar Cambios</button>
+        </div>
+      </form>
+    </div>
+  </main>
+  <script type="module" src="/frontend/scripts/admin.js"></script>
+</body>
+</html>

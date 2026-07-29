@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo - TAL CUAL Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/frontend/styles/tokens.css" />
+  <link rel="stylesheet" href="/frontend/styles/base.css" />
+  <link rel="stylesheet" href="/frontend/styles/components.css" />
+  <link rel="stylesheet" href="/frontend/styles/admin.css" />
+</head>
+<body class="admin-body">
+  <admin-topbar data-page="catalogo"></admin-topbar>
+  <main class="admin-main">
+    <div class="admin-toolbar">
+      <div class="admin-toolbar__title">
+        <h1>Gestión de Catálogo</h1>
+        <p>Administra el inventario, actualiza precios y revisa las nuevas oportunidades.</p>
+      </div>
+      <a href="/admin/productos/nuevo" class="btn btn-primary">
+        <span class="material-symbols-outlined">add</span> Nuevo Producto
+      </a>
+    </div>
+    <div class="filter-bar">
+      <div class="filter-bar__search">
+        <span class="material-symbols-outlined" style="color: var(--tc-text-muted);">search</span>
+        <input type="search" placeholder="Buscar por nombre o referencia..." id="catalogSearch" />
+      </div>
+      <select class="select" id="statusFilter" style="width: auto;">
+        <option value="">Todos los estados</option>
+        <option value="active">Activo</option>
+        <option value="inactive">Inactivo</option>
+        <option value="sold">Vendido</option>
+      </select>
+    </div>
+    <div class="table-card">
+      <div class="table-wrap">
+        <table class="tc-table" id="catalogTable">
+          <thead>
+            <tr><th style="width:80px;">Imagen</th><th>Producto</th><th>Categoría</th><th>Precio</th><th>Estado</th><th style="text-align:right;">Acciones</th></tr>
+          </thead>
+          <tbody id="catalogBody">
+            <tr><td colspan="6" style="text-align:center; color: var(--tc-text-muted); padding: 40px;">Cargando...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination" id="catalogPagination"></div>
+    </div>
+  </main>
+  <script type="module" src="/frontend/scripts/admin.js"></script>
+</body>
+</html>

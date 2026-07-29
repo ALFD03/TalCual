@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TAL CUAL Admin - Edit User</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Playfair+Display:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed": "#ffd7f1",
+                      "surface-variant": "#e3e3da",
+                      "primary-fixed": "#cbee9f",
+                      "surface-container-highest": "#e3e3da",
+                      "surface-container-lowest": "#ffffff",
+                      "outline": "#74796b",
+                      "surface-container": "#eeeee5",
+                      "on-primary-container": "#e7ffc6",
+                      "on-secondary-container": "#3f5681",
+                      "surface-tint": "#4a6727",
+                      "on-secondary-fixed": "#001b3f",
+                      "surface-bright": "#fafaf1",
+                      "surface": "#fafaf1",
+                      "surface-container-high": "#e9e9e0",
+                      "secondary-fixed": "#d7e2ff",
+                      "outline-variant": "#c4c8b8",
+                      "inverse-on-surface": "#f1f1e8",
+                      "secondary": "#475e89",
+                      "on-error-container": "#93000a",
+                      "error-container": "#ffdad6",
+                      "on-surface-variant": "#44483c",
+                      "text-muted": "#6C757D",
+                      "on-tertiary-container": "#fff4f8",
+                      "text-dark": "#1E242B",
+                      "on-primary-fixed": "#102000",
+                      "surface-container-low": "#f4f4eb",
+                      "inverse-surface": "#2f312b",
+                      "primary-fixed-dim": "#afd185",
+                      "on-tertiary-fixed-variant": "#6a335e",
+                      "secondary-fixed-dim": "#afc7f8",
+                      "background": "#fafaf1",
+                      "tertiary": "#7e4571",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#1a1c17",
+                      "on-background": "#1a1c17",
+                      "error": "#ba1a1a",
+                      "on-error": "#ffffff",
+                      "whatsapp-green": "#25D366",
+                      "on-secondary": "#ffffff",
+                      "primary": "#446122",
+                      "on-tertiary-fixed": "#370530",
+                      "secondary-container": "#b5ccfe",
+                      "on-primary-fixed-variant": "#334e11",
+                      "tertiary-container": "#9a5d8b",
+                      "tertiary-fixed-dim": "#f8b0e3",
+                      "inverse-primary": "#afd185",
+                      "on-secondary-fixed-variant": "#2f4770",
+                      "cta-terracotta": "#D97328",
+                      "primary-container": "#5c7a38",
+                      "bg-cream": "#F5F1E8",
+                      "surface-dim": "#dadbd2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "section-gap": "80px",
+                      "stack-sm": "8px",
+                      "stack-md": "16px",
+                      "margin-desktop": "64px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "label-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-sm": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "accent-quote": [
+                              "Playfair Display"
+                      ],
+                      "body-lg": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "accent-quote": [
+                              "20px",
+                              {
+                                      "lineHeight": "30px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-inverse-surface shadow-sm sticky top-0 z-50">
+<div class="flex justify-between items-center px-margin-desktop py-4 w-full max-w-full">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">
+                TAL CUAL Admin
+            </div>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant dark:text-outline-variant pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors font-headline-sm text-headline-sm font-body-md text-body-md" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-outline-variant pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors font-headline-sm text-headline-sm font-body-md text-body-md" href="#">Catálogo</a>
+<a class="text-on-surface-variant dark:text-outline-variant pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors font-headline-sm text-headline-sm font-body-md text-body-md" href="#">Nuevo Producto</a>
+<a class="text-on-surface-variant dark:text-outline-variant pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors font-headline-sm text-headline-sm font-body-md text-body-md" href="#">Reportes</a>
+</div>
+<div class="flex items-center gap-4 text-primary dark:text-inverse-primary">
+<button class="active:opacity-80 transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="active:opacity-80 transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<img alt="Administrador" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A small, circular profile picture of an administrator in a corporate setting. The lighting is soft and professional, highlighting a warm, trustworthy appearance suitable for a modern organic brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBp39mTYzVxZYDBasEzwxJyUC4DUvTS7G_Zb8NlhFKY_gGZGzdOFr9IuLW7EvPMXnq9ANAVTsBRq1e7SNa-9OIv_rE-ortKhpJsGVqk72V5unerRNja3QmIiT2x0MEcLoZvxyg2bxy4mWp2UXr9ZndnzJVrrBSsVVCunbJt9a6hTvM6d6GaxYSySVw1xtwSutn7ldgD-ECv2ADCxN0-z0iVa1KPLNPR-h8ft6IQHG-XgSRwrQ6-5U6f8cRBxZ39MQiBTeIs8guUkeyB"/>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop py-section-gap">
+<div class="mb-gutter">
+<h1 class="font-display-lg text-display-lg md:font-display-lg md:text-display-lg text-on-secondary-fixed mb-stack-sm">Editar Usuario</h1>
+<p class="font-body-lg text-body-lg text-text-muted">Actualiza la información del empleado en el sistema.</p>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] p-gutter md:p-margin-desktop">
+<form action="#" class="space-y-gutter" method="POST">
+<!-- Profile Image Upload Area -->
+<div class="flex flex-col md:flex-row items-center gap-gutter border-b border-surface-container-high pb-gutter">
+<div class="relative group cursor-pointer">
+<img alt="Foto del empleado actual" class="w-32 h-32 rounded-full object-cover shadow-sm border-2 border-surface-container" data-alt="A high-quality, professional headshot of a female employee. She has a warm smile and is wearing casual but neat corporate attire. The background is a soft, blurred cream color, matching the brand's aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS_9Bu0FmAuRFPLaE5sV5EvzwIDzsnYTbYKNhnpHfrj4IkjfOA-VzOdrQXQuHuDnMhvPj8EmlwtkazL9CjKyNkUQxbbrPVTDRKQ68JD-AZLgYaAtWuYx2_S16ql0yHAhCADyiJt0g2g53JfV1sPJz-eCUSNWFnaiqv2lPpNIgd7AISAGbWANABxLwVqPGz3ObmP7EsnTnmIzwoEwjM0wdrONmNufblvaHJqodC3kW7r_6Sz8_LDSVr5Phb_IW-5yP18M8U6kZVEDmw"/>
+<div class="absolute inset-0 bg-on-surface/50 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-on-primary" data-icon="photo_camera" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-stack-sm">Foto de Perfil</h3>
+<p class="font-body-md text-body-md text-text-muted mb-stack-md">Sube una nueva imagen en formato JPG o PNG. Tamaño máximo 2MB.</p>
+<button class="inline-flex items-center gap-2 px-4 py-2 border border-secondary text-secondary rounded-lg font-label-md text-label-md hover:bg-secondary-fixed transition-colors" type="button">
+<span class="material-symbols-outlined" data-icon="upload">upload</span>
+                            Cambiar Imagen
+                        </button>
+</div>
+</div>
+<!-- Form Fields -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="space-y-stack-sm">
+<label class="block font-label-md text-label-md text-on-surface" for="fullName">Nombre Completo</label>
+<input class="w-full bg-surface rounded-lg border border-outline-variant px-4 py-3 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow" id="fullName" name="fullName" type="text" value="María Laura Góngora"/>
+</div>
+<div class="space-y-stack-sm">
+<label class="block font-label-md text-label-md text-on-surface" for="email">Correo Electrónico</label>
+<input class="w-full bg-surface rounded-lg border border-outline-variant px-4 py-3 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow" id="email" name="email" type="email" value="ml.gongora@talcual.store"/>
+</div>
+<div class="space-y-stack-sm md:col-span-2">
+<label class="block font-label-md text-label-md text-on-surface" for="role">Rol del Sistema</label>
+<div class="relative">
+<select class="w-full bg-surface rounded-lg border border-outline-variant px-4 py-3 font-body-md text-body-md text-on-surface appearance-none focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow" id="role" name="role">
+<option value="admin">Administrador</option>
+<option selected="" value="manager">Gerente de Tienda</option>
+<option value="staff">Staff General</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-text-muted">
+<span class="material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col-reverse md:flex-row justify-end gap-stack-md pt-stack-md">
+<button class="px-6 py-3 border border-outline-variant text-on-surface-variant rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-colors" type="button">
+                        Cancelar
+                    </button>
+<button class="px-6 py-3 bg-cta-terracotta text-on-primary rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-sm" type="submit">
+<span class="material-symbols-outlined" data-icon="save">save</span>
+                        Guardar Cambios
+                    </button>
+</div>
+</form>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-dim mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-stack-md w-full">
+<div class="font-headline-sm text-headline-sm text-primary mb-stack-md md:mb-0">
+                TAL CUAL Admin
+            </div>
+<div class="text-on-surface-variant dark:text-outline-variant font-label-md text-label-md text-center md:text-left mb-stack-md md:mb-0">
+                © 2024 TAL CUAL Store - Gestión Circular. Todos los derechos reservados.
+            </div>
+<div class="flex gap-4">
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors cursor-pointer" href="#">Soporte Técnico</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors cursor-pointer" href="#">Manual de Usuario</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors cursor-pointer" href="#">Privacidad</a>
+</div>
+</div>
+</footer>
+</body></html>

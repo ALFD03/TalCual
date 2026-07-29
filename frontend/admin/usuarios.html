@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usuarios - TAL CUAL Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/frontend/styles/tokens.css" />
+  <link rel="stylesheet" href="/frontend/styles/base.css" />
+  <link rel="stylesheet" href="/frontend/styles/components.css" />
+  <link rel="stylesheet" href="/frontend/styles/admin.css" />
+</head>
+<body class="admin-body">
+  <admin-topbar data-page="usuarios"></admin-topbar>
+  <main class="admin-main">
+    <div class="admin-toolbar">
+      <div class="admin-toolbar__title">
+        <h1>Gestión de Usuarios</h1>
+        <p>Administra los accesos y roles del equipo TAL CUAL.</p>
+      </div>
+      <a href="/admin/usuarios/nuevo" class="btn btn-cta">
+        <span class="material-symbols-outlined">person_add</span> Agregar Nuevo Usuario
+      </a>
+    </div>
+    <div class="user-grid" id="userGrid">
+      <div style="grid-column:1/-1; text-align:center; color:var(--tc-text-muted); padding: var(--tc-sp-2xl);">Cargando...</div>
+    </div>
+  </main>
+  <script type="module" src="/frontend/scripts/admin.js"></script>
+</body>
+</html>

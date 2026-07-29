@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuevo Usuario - TAL CUAL Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/frontend/styles/tokens.css" />
+  <link rel="stylesheet" href="/frontend/styles/base.css" />
+  <link rel="stylesheet" href="/frontend/styles/components.css" />
+  <link rel="stylesheet" href="/frontend/styles/admin.css" />
+</head>
+<body class="admin-body">
+  <admin-topbar data-page="usuarios"></admin-topbar>
+  <main class="admin-main">
+    <div style="max-width: 600px; margin-inline: auto;">
+      <div style="margin-bottom: var(--tc-sp-lg);">
+        <h1>Crear Nuevo Usuario</h1>
+        <p style="color: var(--tc-text-muted);">Ingresa los detalles para registrar un nuevo integrante en el panel administrativo.</p>
+      </div>
+      <form id="userCreateForm" class="admin-card stack-lg">
+        <div class="field"><label class="field__label">Nombre Completo</label><div class="input-group"><span class="input-group__icon material-symbols-outlined">person</span><input class="input" id="userName" placeholder="Ej. Ana Gómez" required /></div></div>
+        <div class="field"><label class="field__label">Correo Electrónico</label><div class="input-group"><span class="input-group__icon material-symbols-outlined">mail</span><input class="input" id="userEmail" type="email" placeholder="ana@ejemplo.com" required /></div></div>
+        <div class="field"><label class="field__label">Rol</label><select class="select" id="userRole"><option value="editor">Editor</option><option value="admin">Administrador</option><option value="viewer">Visualizador</option></select></div>
+        <div class="field"><label class="field__label">Contraseña Temporal</label><div class="input-group"><span class="input-group__icon material-symbols-outlined">lock</span><input class="input" id="userPassword" type="password" placeholder="••••••••" required /><span style="position:absolute; right:12px; top:50%; transform:translateY(-50%); cursor:pointer; color: var(--tc-text-muted);" id="togglePass"><span class="material-symbols-outlined">visibility_off</span></span></div></div>
+        <div class="form-actions">
+          <a href="/admin/usuarios" class="btn btn-ghost">Cancelar</a>
+          <button class="btn btn-cta" type="submit"><span class="material-symbols-outlined">person_add</span> Crear Usuario</button>
+        </div>
+      </form>
+    </div>
+  </main>
+  <script type="module" src="/frontend/scripts/admin.js"></script>
+</body>
+</html>

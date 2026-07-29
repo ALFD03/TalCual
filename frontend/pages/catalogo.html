@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo - TAL CUAL</title>
+  <meta name="description" content="Explora el catálogo de TAL CUAL: ropa, muebles, zapatos, libros y más. Artículos nuevos y de segunda mano curados con calidad." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/frontend/styles/tokens.css" />
+  <link rel="stylesheet" href="/frontend/styles/base.css" />
+  <link rel="stylesheet" href="/frontend/styles/components.css" />
+  <link rel="stylesheet" href="/frontend/styles/app.css" />
+</head>
+<body>
+
+  <site-header data-active="catalogo"></site-header>
+
+  <main class="container section">
+    <div class="section-heading" style="margin-bottom: var(--tc-sp-xl);">
+      <h2>Nuestro Catálogo</h2>
+      <p>Cada pieza con historia. Cada compra, una nueva oportunidad.</p>
+    </div>
+
+    <!-- Filtros -->
+    <div class="filter-toolbar" style="display: flex; flex-direction: column; gap: var(--tc-sp-md); margin-bottom: var(--tc-sp-xl);">
+      <div class="search-row" style="display: flex; gap: var(--tc-sp-sm); align-items: center; background: var(--tc-surface-lowest); border: 1px solid var(--tc-outline-variant); border-radius: var(--tc-radius-full); padding: 8px 16px;">
+        <span class="material-symbols-outlined" style="color: var(--tc-text-muted);">search</span>
+        <input data-catalog-search type="search" placeholder="Buscar producto..." aria-label="Buscar" style="flex:1; background: transparent; border: none; outline: none; color: var(--tc-on-surface);" />
+      </div>
+      <div style="display: flex; gap: var(--tc-sp-xs); align-items: center; overflow-x: auto;" class="hide-scrollbar">
+        <select data-catalog-sort class="select" style="width: auto;">
+          <option value="recientes">Más recientes</option>
+          <option value="precio-asc">Precio: menor a mayor</option>
+          <option value="precio-desc">Precio: mayor a menor</option>
+        </select>
+        <select data-catalog-condition class="select" style="width: auto;">
+          <option value="">Todas las condiciones</option>
+          <option value="nuevo">Nuevo</option>
+          <option value="como_nuevo">Como nuevo</option>
+          <option value="segunda_mano">Segunda mano</option>
+        </select>
+      </div>
+    </div>
+
+    <category-pills data-source="filtro-catalogo"></category-pills>
+
+    <div style="margin-top: var(--tc-sp-xl);"></div>
+
+    <product-grid data-source="catalogo" data-query="true"></product-grid>
+
+    <div id="catalogEmpty" class="empty-state" style="display:none;">
+      <span class="material-symbols-outlined">search_off</span>
+      <h3>No encontramos productos</h3>
+      <p>Prueba ajustando los filtros o la búsqueda.</p>
+    </div>
+
+    <!-- Paginación -->
+    <pagination-controls data-target="catalogo"></pagination-controls>
+  </main>
+
+  <site-footer></site-footer>
+  <cart-drawer></cart-drawer>
+  <mobile-menu></mobile-menu>
+  <toast-notif></toast-notif>
+
+  <script type="module" src="/frontend/scripts/app.js"></script>
+</body>
+</html>

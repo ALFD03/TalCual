@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TAL CUAL - Nuevo Producto</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Playfair+Display:ital@0;1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#ffffff",
+                      "primary-container": "#5c7a38",
+                      "secondary": "#475e89",
+                      "primary": "#446122",
+                      "surface-variant": "#e3e3da",
+                      "surface": "#fafaf1",
+                      "surface-bright": "#fafaf1",
+                      "on-secondary-fixed-variant": "#2f4770",
+                      "surface-container": "#eeeee5",
+                      "on-background": "#1a1c17",
+                      "cta-terracotta": "#D97328",
+                      "on-primary": "#ffffff",
+                      "on-surface-variant": "#44483c",
+                      "outline": "#74796b",
+                      "tertiary-container": "#9a5d8b",
+                      "surface-tint": "#4a6727",
+                      "on-tertiary-fixed-variant": "#6a335e",
+                      "whatsapp-green": "#25D366",
+                      "text-dark": "#1E242B",
+                      "error": "#ba1a1a",
+                      "on-error-container": "#93000a",
+                      "surface-container-high": "#e9e9e0",
+                      "error-container": "#ffdad6",
+                      "inverse-primary": "#afd185",
+                      "secondary-fixed": "#d7e2ff",
+                      "primary-fixed-dim": "#afd185",
+                      "on-primary-container": "#e7ffc6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed": "#102000",
+                      "surface-container-highest": "#e3e3da",
+                      "on-primary-fixed-variant": "#334e11",
+                      "on-error": "#ffffff",
+                      "secondary-fixed-dim": "#afc7f8",
+                      "surface-dim": "#dadbd2",
+                      "tertiary-fixed-dim": "#f8b0e3",
+                      "background": "#fafaf1",
+                      "tertiary-fixed": "#ffd7f1",
+                      "outline-variant": "#c4c8b8",
+                      "on-secondary-container": "#3f5681",
+                      "on-tertiary-container": "#fff4f8",
+                      "surface-container-low": "#f4f4eb",
+                      "on-tertiary-fixed": "#370530",
+                      "on-secondary": "#ffffff",
+                      "text-muted": "#6C757D",
+                      "primary-fixed": "#cbee9f",
+                      "inverse-surface": "#2f312b",
+                      "secondary-container": "#b5ccfe",
+                      "on-secondary-fixed": "#001b3f",
+                      "on-surface": "#1a1c17",
+                      "bg-cream": "#F5F1E8",
+                      "tertiary": "#7e4571",
+                      "inverse-on-surface": "#f1f1e8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "16px",
+                      "section-gap": "80px",
+                      "margin-desktop": "64px",
+                      "margin-mobile": "16px",
+                      "stack-sm": "8px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-sm": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "accent-quote": [
+                              "Playfair Display"
+                      ]
+              },
+              "fontSize": {
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "accent-quote": [
+                              "20px",
+                              {
+                                      "lineHeight": "30px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+      </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+          .soft-shadow {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+          }
+        }
+      </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-inverse-surface font-headline-sm text-headline-sm font-body-md text-body-md docked full-width top-0 bg-surface-container-low dark:bg-inverse-surface shadow-sm flex justify-between items-center px-margin-desktop py-4 w-full max-w-full z-50 sticky">
+<div class="flex items-center gap-8">
+<div class="h-12 w-auto"><img alt="TAL CUAL Logo" class="h-full w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_M11BC7xiDvbn3oRg12jQzLYghoCoy7PbOAW8KOczIHO-y_lJLNWnBdM5eCDqIIaVvNURdIPILMTOg7GLNG3jaGaU5rN1nduBDXfiO53Q8NAQbzFTSRre-6ewbmi6_I01IFxD97iCLRd1RA5X3pDasoPPPk9JPoX7c_S7qedKZGKIEQDXHv8MET5XvgpU9RMiYJmRYv-G_HXFk1Keu92gFOj7yI75HXadbWTsDhqULbXZD-v7Svtt4IiSxiDcgBUGQ7sIZ34bK3fJ"/></div>
+<nav class="hidden md:flex gap-6 mt-1">
+<a class="text-on-surface-variant dark:text-outline-variant pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors active:opacity-80 transition-all font-body-md text-body-md" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-outline-variant pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors active:opacity-80 transition-all font-body-md text-body-md" href="#">Catálogo</a>
+<a class="text-primary dark:text-inverse-primary border-b-2 border-primary font-bold pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors active:opacity-80 transition-all font-body-md text-body-md" href="#">Nuevo Producto</a>
+<a class="text-on-surface-variant dark:text-outline-variant pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors active:opacity-80 transition-all font-body-md text-body-md" href="#">Reportes</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-surface-container-high mr-2">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img alt="Administrador" class="w-full h-full object-cover" data-alt="A close up professional headshot of an administrative user in a brightly lit modern office setting. Warm lighting, sharp focus, professional attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlN6BTNPDwt18H1KWckQu3wjopPEgpviYu65tnLq9TTYGES2loKNsiV4MSc7sUPKPTyhF5zzKfXvsibdAOJiG_M8Vo5x0LgCOEDSLR3AKYozycB21dg7GXmxiCxn5Vjt5U754JrF-lT4mKddYnrodlb69QD5DuucBQFoAKwkHEfHxuwZolgklMOfOQ-2sZ3HdaGJr9pHQMMZCigNw5SfMNnFqO_rV-Ba68LK52uSbm5eLgIHymZEqAbQcr1elqUIksM76YidO_87oh"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow px-margin-mobile md:px-margin-desktop py-section-gap">
+<div class="max-w-4xl mx-auto">
+<div class="mb-stack-md">
+<h1 class="font-headline-md text-headline-md text-text-dark">Agregar Nuevo Producto</h1>
+<p class="text-text-muted font-body-md text-body-md mt-2">Completa los detalles para listar un nuevo artículo en el catálogo circular.</p>
+</div>
+<form class="space-y-stack-md">
+<!-- 1. Basic Info Card -->
+<div class="bg-on-tertiary rounded-xl soft-shadow p-6 md:p-8">
+<h2 class="font-headline-sm text-headline-sm text-secondary mb-6 border-b border-surface-variant pb-4">Información Básica</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="md:col-span-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2" for="title">Título del Producto</label>
+<input class="w-full rounded-[12px] border-text-muted/30 focus:border-primary focus:ring focus:ring-primary/20 bg-surface text-on-surface p-3 transition-colors" id="title" placeholder="Ej. Chaqueta Vintage de Cuero" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2" for="category">Categoría</label>
+<select class="w-full rounded-[12px] border-text-muted/30 focus:border-primary focus:ring focus:ring-primary/20 bg-surface text-on-surface p-3 transition-colors appearance-none" id="category">
+<option disabled="" selected="" value="">Selecciona una categoría</option>
+<option value="ropa">Ropa</option>
+<option value="accesorios">Accesorios</option>
+<option value="hogar">Hogar &amp; Decoración</option>
+<option value="muebles">Muebles</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2" for="price">Precio (USD)</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted font-body-md">$</span>
+<input class="w-full rounded-[12px] border-text-muted/30 focus:border-primary focus:ring focus:ring-primary/20 bg-surface text-on-surface p-3 pl-8 transition-colors" id="price" placeholder="0.00" step="0.01" type="number"/>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. Product Details Card -->
+<div class="bg-on-tertiary rounded-xl soft-shadow p-6 md:p-8">
+<h2 class="font-headline-sm text-headline-sm text-secondary mb-6 border-b border-surface-variant pb-4">Detalles del Producto</h2>
+<div class="space-y-6">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2" for="description">Descripción Detallada</label>
+<textarea class="w-full rounded-[12px] border-text-muted/30 focus:border-primary focus:ring focus:ring-primary/20 bg-surface text-on-surface p-3 transition-colors resize-y" id="description" placeholder="Describe el estado, materiales, marca y cualquier detalle relevante para el comprador..." rows="4"></textarea>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-3">Condición del Artículo</label>
+<div class="flex flex-wrap gap-4">
+<label class="cursor-pointer">
+<input class="peer sr-only" name="condition" type="radio" value="nuevo"/>
+<div class="px-6 py-2 rounded-full border border-text-muted/30 bg-surface text-on-surface-variant peer-checked:bg-primary peer-checked:text-on-primary peer-checked:border-primary transition-all font-label-md text-label-md flex items-center gap-2">
+                                        Nuevo
+                                    </div>
+</label>
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="condition" type="radio" value="como_nuevo"/>
+<div class="px-6 py-2 rounded-full border border-text-muted/30 bg-surface text-on-surface-variant peer-checked:bg-primary peer-checked:text-on-primary peer-checked:border-primary transition-all font-label-md text-label-md flex items-center gap-2">
+                                        Como nuevo
+                                    </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="condition" type="radio" value="segunda_mano"/>
+<div class="px-6 py-2 rounded-full border border-text-muted/30 bg-surface text-on-surface-variant peer-checked:bg-primary peer-checked:text-on-primary peer-checked:border-primary transition-all font-label-md text-label-md flex items-center gap-2">
+                                        Segunda mano
+                                    </div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. Image Upload Card -->
+<div class="bg-on-tertiary rounded-xl soft-shadow p-6 md:p-8">
+<h2 class="font-headline-sm text-headline-sm text-secondary mb-6 border-b border-surface-variant pb-4">Imágenes</h2>
+<div class="border-2 border-dashed border-text-muted/40 rounded-[12px] bg-surface-container-lowest hover:bg-surface transition-colors p-8 flex flex-col items-center justify-center text-center cursor-pointer group">
+<div class="h-16 w-16 bg-surface-container rounded-full flex items-center justify-center mb-4 group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-outline text-3xl group-hover:text-primary transition-colors">cloud_upload</span>
+</div>
+<p class="font-label-md text-label-md text-secondary mb-1">Arrastra y suelta imágenes aquí</p>
+<p class="font-body-md text-body-md text-text-muted text-sm mb-4">o haz clic para explorar tus archivos</p>
+<button class="px-6 py-2 rounded-full border border-secondary text-secondary font-label-md text-label-md hover:bg-secondary hover:text-on-secondary transition-colors" type="button">
+                            Seleccionar Archivos
+                        </button>
+<p class="font-body-md text-body-md text-text-muted text-xs mt-4">Formatos soportados: JPG, PNG. Máximo 5MB por imagen.</p>
+</div>
+<!-- Image Preview Area (Empty State for mock) -->
+<div class="grid grid-cols-4 gap-4 mt-6 hidden">
+<!-- Preview slots would go here -->
+</div>
+</div>
+<!-- Form Actions -->
+<div class="flex justify-end gap-4 pt-4">
+<button class="px-6 py-3 rounded-full border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-colors" type="button">
+                        Cancelar
+                    </button>
+<button class="px-8 py-3 rounded-full bg-cta-terracotta text-on-tertiary font-label-md text-label-md hover:opacity-90 shadow-sm transition-opacity flex items-center gap-2" type="submit">
+<span class="material-symbols-outlined text-sm">save</span>
+                        Guardar Producto
+                    </button>
+</div>
+</form>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-dim font-label-md text-label-md full-width bottom bg-surface-container-high dark:bg-surface-dim flat no shadows flex flex-col md:flex-row justify-between items-center px-margin-desktop py-stack-md w-full mt-auto">
+<div class="font-headline-sm text-headline-sm text-primary mb-4 md:mb-0">
+            TAL CUAL Store
+        </div>
+<div class="text-on-surface-variant dark:text-outline-variant font-body-md text-body-md text-sm mb-4 md:mb-0 text-center md:text-left">
+            © 2024 TAL CUAL Store - Gestión Circular. Todos los derechos reservados.
+        </div>
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Soporte Técnico</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Manual de Usuario</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Privacidad</a>
+</div>
+</footer>
+</body></html>

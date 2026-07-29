@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TAL CUAL - Configuración de Usuarios</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#370530",
+                        "on-secondary-container": "#3f5681",
+                        "background": "#fafaf1",
+                        "bg-cream": "#F5F1E8",
+                        "inverse-on-surface": "#f1f1e8",
+                        "secondary-container": "#b5ccfe",
+                        "tertiary-container": "#9a5d8b",
+                        "whatsapp-green": "#25D366",
+                        "surface-container-highest": "#e3e3da",
+                        "tertiary": "#7e4571",
+                        "on-background": "#1a1c17",
+                        "tertiary-fixed-dim": "#f8b0e3",
+                        "surface-bright": "#fafaf1",
+                        "surface-container": "#eeeee5",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#c4c8b8",
+                        "on-surface": "#1a1c17",
+                        "on-primary-fixed": "#102000",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#ffd7f1",
+                        "secondary-fixed": "#d7e2ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#2f4770",
+                        "primary": "#446122",
+                        "secondary-fixed-dim": "#afc7f8",
+                        "cta-terracotta": "#D97328",
+                        "text-dark": "#1E242B",
+                        "surface-container-high": "#e9e9e0",
+                        "on-error": "#ffffff",
+                        "outline": "#74796b",
+                        "surface-tint": "#4a6727",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface": "#fafaf1",
+                        "surface-dim": "#dadbd2",
+                        "inverse-primary": "#afd185",
+                        "on-tertiary-container": "#fff4f8",
+                        "primary-container": "#5c7a38",
+                        "on-primary": "#ffffff",
+                        "secondary": "#475e89",
+                        "inverse-surface": "#2f312b",
+                        "text-muted": "#6C757D",
+                        "on-primary-fixed-variant": "#334e11",
+                        "surface-variant": "#e3e3da",
+                        "primary-fixed": "#cbee9f",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#afd185",
+                        "on-tertiary-fixed-variant": "#6a335e",
+                        "on-surface-variant": "#44483c",
+                        "on-primary-container": "#e7ffc6",
+                        "surface-container-low": "#f4f4eb",
+                        "on-secondary-fixed": "#001b3f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "section-gap": "80px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "accent-quote": ["Playfair Display"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "accent-quote": ["20px", { "lineHeight": "30px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-bg-cream text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<nav class="w-full bg-surface-container border-b border-outline-variant py-4 px-6 md:px-margin-desktop flex items-center justify-between z-40 sticky top-0">
+<!-- Brand/Logo -->
+<div class="flex items-center gap-4">
+<img alt="TAL CUAL Logo" class="h-10 w-10 object-contain rounded-lg bg-white p-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfOr6nNRPvenI67n9rn2eQE0MePF3v5cCGbZYefVHv23JFZlF5xZ-TJOjrDKWCYVnilvIKRxaKIVChrKuRgbJdgDuzd1PPl6AfblkkKPPvlkYDxTK5OcJSfcIacKbTqBuS_-KX72tMxKP9X4G0BPhRKE6fssyuCZiVUxIah8DB5nfovlD9_Txjj4N4Ec44Sh7g4Hvrn-NV129WmsTU7NGAD45dTgdY_uUJuok8xU5E0Osa-BUn7znlITOQRE1R_GjMZ3ykoxVJ_ebH"/>
+<h1 class="font-headline-sm text-headline-sm text-primary hidden sm:block">TAL CUAL</h1>
+</div>
+<!-- Navigation Links -->
+<div class="hidden md:flex items-center gap-2">
+<a class="flex items-center gap-2 text-on-surface-variant px-4 py-2 rounded-lg hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-2 text-on-surface-variant px-4 py-2 rounded-lg hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md text-label-md">Inventario</span>
+</a>
+<a class="flex items-center gap-2 text-on-surface-variant px-4 py-2 rounded-lg hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">Ventas</span>
+</a>
+<a class="flex items-center gap-2 bg-primary-container text-on-primary-container px-4 py-2 rounded-lg shadow-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-md text-label-md">Configuración</span>
+</a>
+</div>
+<!-- Right Section (CTA + Profile) -->
+<div class="flex items-center gap-4">
+<button class="hidden sm:flex bg-primary text-on-primary py-2 px-4 rounded-full font-label-md text-label-md hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+            Nueva Oportunidad
+        </button>
+<div class="relative">
+<button class="flex items-center gap-2 hover:bg-surface-container-highest p-1 rounded-full transition-colors" id="profileDropdownBtn">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden">
+<img alt="Admin profile" class="w-full h-full object-cover" data-alt="A close up professional headshot of an administrative user for a modern circular economy web app. Clean lighting, warm cream background, subtle olive green shirt, soft focus. High quality, editorial style portrait photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtA10paJsScoxi6AGVsH5lSDfKQinpCkkFzn_hS5i4ZtHLBgS2OvF_qY2XbUpJPHtc3QUzNdhG9KLyP4kXbTAXG49Lgeo9UlzLTo78Z1wdAfFQLMxvs71EAw0emPNnEIs87bUbNjb7dUXT8_T1eMaZQFWpW1194FjM4xXGWJyEqcnDoN6A3nBwfcmSTfMQXbqyP8g6C44n55n0vWoZtIUFZvbjBPwerq2hRel7pgcaT4Dg2oRST9pwieTqIBEXvgagtqyjNTlGg0xI"/>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">expand_more</span>
+</button>
+<!-- Dropdown Menu -->
+<div class="hidden absolute right-0 top-full mt-2 w-56 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-lg overflow-hidden z-50" id="profileDropdown">
+<ul class="py-1">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="account_circle">account_circle</span>
+<span class="font-label-md text-label-md">Mi Perfil</span>
+</a>
+</li>
+<li class="border-t border-outline-variant mt-1 pt-1">
+<a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Cerrar Sesión</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-7xl mx-auto p-6 md:p-margin-desktop min-h-screen relative">
+<!-- Header Section -->
+<header class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-10 pb-6 border-b border-outline-variant/30 gap-4">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Gestión de Usuarios</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Administra los accesos y roles del equipo TAL CUAL.</p>
+</div>
+<button class="bg-cta-terracotta text-white py-3 px-6 rounded-full font-label-md text-label-md hover:opacity-90 transition-opacity shadow-md flex items-center justify-center gap-2 sm:w-auto w-full">
+<span class="material-symbols-outlined text-sm">person_add</span>
+                Agregar Nuevo Usuario
+            </button>
+</header>
+<!-- Filters & Search (Bento Style approach for controls) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="md:col-span-2 bg-surface-container-lowest rounded-2xl p-2 shadow-[0_4px_20px_rgba(0,0,0,0.02)] border border-outline-variant/50 flex items-center">
+<span class="material-symbols-outlined text-text-muted ml-4 mr-2">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-on-surface placeholder-text-muted font-body-md text-body-md py-3" placeholder="Buscar por nombre o email..." type="text"/>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-2 shadow-[0_4px_20px_rgba(0,0,0,0.02)] border border-outline-variant/50 flex items-center">
+<span class="material-symbols-outlined text-text-muted ml-4 mr-2">filter_list</span>
+<select class="w-full bg-transparent border-none focus:ring-0 text-on-surface font-body-md text-body-md py-3 appearance-none cursor-pointer">
+<option value="all">Todos los Roles</option>
+<option value="admin">Administrador</option>
+<option value="editor">Editor de Catálogo</option>
+<option value="viewer">Solo Lectura</option>
+</select>
+<span class="material-symbols-outlined text-text-muted mr-4 pointer-events-none">arrow_drop_down</span>
+</div>
+</div>
+<!-- Users Data Grid (Glassmorphism inspired cards instead of standard table) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- User Card 1 -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-outline-variant/20 hover:shadow-lg transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/10 rounded-bl-full -mr-8 -mt-8 pointer-events-none transition-transform group-hover:scale-110 duration-500"></div>
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full bg-surface-variant overflow-hidden border-2 border-white shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A warm, professional headshot of a female team member in a natural light setting. She has a friendly expression. Soft depth of field, high-end editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8Calslo9T-abtjtzugy638i3XHQOrh9m4a0WS680WUL5QqL-SocxRJcJ5HKZHw9IxJCxRpjTUnEFVelUYwBfW8csObTgj2w5Cq0MetY_I3Lb8qHB8fdly231VNsa54fEgB4hi-VhuyWHZUm2BbJ6tf-JqsR4uizWzLgmJXks_zdswr4OH2zkAmv9mD3C2Px9aUML2QjG0orQ_SBh0U83QxeHFVm_7hKNNV-MQc6l2LS3GlY2yD1HPPK1QYp1i6tkqejhCIQfeEk5I"/>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Laura Martínez</h3>
+<p class="text-text-muted font-body-md text-sm mt-1">laura@talcual.com</p>
+</div>
+</div>
+<!-- Actions Menu -->
+<button class="text-text-muted hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="mt-6 flex items-center justify-between pt-4 border-t border-outline-variant/30">
+<div class="flex flex-col gap-1">
+<span class="text-xs text-text-muted uppercase tracking-wider font-semibold">Rol</span>
+<span class="font-label-md text-label-md text-primary bg-primary-container/20 px-3 py-1 rounded-full w-fit">Administrador</span>
+</div>
+<div class="flex flex-col gap-1 items-end">
+<span class="text-xs text-text-muted uppercase tracking-wider font-semibold">Estado</span>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-whatsapp-green"></div>
+<span class="font-label-md text-label-md text-on-surface-variant">Activo</span>
+</div>
+</div>
+</div>
+</div>
+<!-- User Card 2 -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-outline-variant/20 hover:shadow-lg transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary-container/10 rounded-bl-full -mr-8 -mt-8 pointer-events-none transition-transform group-hover:scale-110 duration-500"></div>
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full bg-surface-variant overflow-hidden border-2 border-white shadow-sm flex items-center justify-center text-primary-container font-headline-md">
+                            CS
+                        </div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Carlos Sánchez</h3>
+<p class="text-text-muted font-body-md text-sm mt-1">carlos@talcual.com</p>
+</div>
+</div>
+<button class="text-text-muted hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="mt-6 flex items-center justify-between pt-4 border-t border-outline-variant/30">
+<div class="flex flex-col gap-1">
+<span class="text-xs text-text-muted uppercase tracking-wider font-semibold">Rol</span>
+<span class="font-label-md text-label-md text-secondary bg-secondary-container/30 px-3 py-1 rounded-full w-fit">Editor de Catálogo</span>
+</div>
+<div class="flex flex-col gap-1 items-end">
+<span class="text-xs text-text-muted uppercase tracking-wider font-semibold">Estado</span>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-whatsapp-green"></div>
+<span class="font-label-md text-label-md text-on-surface-variant">Activo</span>
+</div>
+</div>
+</div>
+</div>
+<!-- User Card 3 -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-outline-variant/20 hover:shadow-lg transition-shadow relative overflow-hidden group opacity-75">
+<div class="absolute top-0 right-0 w-32 h-32 bg-error-container/10 rounded-bl-full -mr-8 -mt-8 pointer-events-none transition-transform group-hover:scale-110 duration-500"></div>
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full bg-surface-variant overflow-hidden border-2 border-white shadow-sm">
+<img class="w-full h-full object-cover grayscale" data-alt="A headshot of a male administrative user, looking slightly away from the camera. Muted lighting, desaturated colors to indicate an inactive state. Editorial photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnFRRyWiE88Aa7Wv68KISPgw3sn8-_Rz-1BheAp-njSQbGROoxaEPGlXy_y2zNpqcXC_e8WzTTaAyohPQUn4PlbwTWce9fzxXiiGqVtc69iZPOubtAEzCB_-XSaOBtaRtXsArn_xErz91flKDjHJF0RDtjTiIQlZnnLjseuqtf2mndIMhIQscw2bwPRAPfQjVlCzfd-O2GDpw-FFgVrOIzG7p4JA_vfrK3yP6DGVMg5F7ynWJmSkmf9oITtmj2q7Bf3pyX2UzIvJuM"/>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface-variant leading-tight line-through decoration-text-muted/50">Diego Gómez</h3>
+<p class="text-text-muted font-body-md text-sm mt-1">diego@talcual.com</p>
+</div>
+</div>
+<button class="text-text-muted hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="mt-6 flex items-center justify-between pt-4 border-t border-outline-variant/30">
+<div class="flex flex-col gap-1">
+<span class="text-xs text-text-muted uppercase tracking-wider font-semibold">Rol</span>
+<span class="font-label-md text-label-md text-text-muted bg-surface-container px-3 py-1 rounded-full w-fit">Viewer</span>
+</div>
+<div class="flex flex-col gap-1 items-end">
+<span class="text-xs text-text-muted uppercase tracking-wider font-semibold">Estado</span>
+<div class="flex items-center gap-2 bg-error-container/30 px-3 py-1 rounded-full">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<span class="font-label-md text-label-md text-error">Inactivo</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple Dropdown Toggle Script
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownBtn = document.getElementById('profileDropdownBtn');
+            const dropdown = document.getElementById('profileDropdown');
+
+            dropdownBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('hidden');
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target) && !dropdownBtn.contains(e.target)) {
+                    dropdown.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,33 @@
+{
+  "name": "talcual",
+  "version": "1.0.0",
+  "description": "Tienda TAL CUAL - economía circular. Frontend estático + serverless API con Neon y Vercel Blob.",
+  "homepage": "https://github.com/ALFD03/TalCual#readme",
+  "bugs": {
+    "url": "https://github.com/ALFD03/TalCual/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ALFD03/TalCual.git"
+  },
+  "license": "ISC",
+  "author": "TAL CUAL",
+  "type": "commonjs",
+  "main": "api/products/index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod",
+    "db:seed": "node db/seed.js",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
+    "@vercel/blob": "^2.6.1",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "dotenv": "^17.4.2",
+    "vercel": "^58.1.0"
+  }
+}
