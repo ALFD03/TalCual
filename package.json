@@ -15,10 +15,9 @@
   "type": "commonjs",
   "main": "api/products/index.js",
   "scripts": {
-    "dev": "serve frontend -l 3000 --cors",
-    "dev:full": "serve frontend -l 3000 --cors & npx vercel dev --listen 3001",
-    "db:seed": "node db/seed.js",
-    "test": "echo \"No tests yet\" && exit 0"
+  "dev": "vercel dev",
+  "db:seed": "node db/seed.js",
+  "test": "echo \"No tests yet\" && exit 0"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
@@ -28,6 +27,7 @@
   },
   "devDependencies": {
     "dotenv": "^17.4.2",
-    "serve": "^14.2.6"
+    "serve": "^14.2.6",
+    "vercel": "^58.3.0"
   }
 }
