@@ -148,16 +148,18 @@ if (catalogTable) {
           if (p >= 1 && p <= totalPages) { currentPage = p; loadCatalog(); }
         });
       });
-      // Delete handlers
-      tbody.querySelectorAll('[data-del]').forEach(btn => {
-        btn.addEventListener('click', async () => {
-          if (!confirm('¿Eliminar este producto?')) return;
-          try {
-            await api.deleteProduct(getToken(), btn.dataset.del);
-            loadCatalog();
-          } catch (err) { alert(err.message); }
+      // Delete handlers (delegación)
+      tbody.onclick = (e) => {
+        const btn = e.target.closest('[data-del]');
+        if (!btn) return;
+        e.preventDefault();
+        if (!confirm('¿Eliminar este producto?')) return;
+        api.deleteProduct(getToken(), btn.dataset.del).then(() => {
+          loadCatalog();
+        }).catch((err) => {
+          alert(err.message);
         });
-      });
+      };
     } catch (err) { tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:40px;color:var(--tc-error);">Error: ${err.message}</td></tr>`; }
   }
 
