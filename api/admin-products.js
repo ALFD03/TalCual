@@ -31,7 +31,7 @@ module.exports = async (req, res) => {
       }
 
       const { q, status } = req.query;
-      let sql = 'SELECT p.*, c.name as category_name FROM products p LEFT JOIN categories c ON p.category_id = c.id';
+      let sql = 'SELECT p.*, c.name as category_name FROM products p LEFT JOIN categories c ON p.category = c.id';
       let where = [];
       let params = [];
 
@@ -54,23 +54,23 @@ module.exports = async (req, res) => {
 
     // CREAR
     if (req.method === 'POST') {
-      const { title, description, price, category_id, condition_id, image_url, status = 'active' } = req.body || {};
+      const { title, description, price, category, condition, image_url, status = 'active' } = req.body || {};
       const result = await query(
-        `INSERT INTO products (title, description, price, category_id, condition_id, image_url, status)
+        `INSERT INTO products (title, description, price, category, condition, image_url, status)
          VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
-        [title, description, price, category_id || null, condition_id || null, image_url || '', status]
+        [title, description, price, category || null, condition || null, image_url || '', status]
       );
       return res.status(201).json({ success: true, data: result.rows[0] });
     }
 
     // ACTUALIZAR
     if (req.method === 'PUT' && id) {
-      const { title, description, price, category_id, condition_id, image_url, status } = req.body || {};
+      const { title, description, price, category, condition, image_url, status } = req.body || {};
       const result = await query(
         `UPDATE products 
-         SET title = $1, description = $2, price = $3, category_id = $4, condition_id = $5, image_url = $6, status = $7, updated_at = NOW()
+         SET title = $1, description = $2, price = $3, category = $4, condition = $5, image_url = $6, status = $7, updated_at = NOW()
          WHERE id = $8 RETURNING *`,
-        [title, description, price, category_id || null, condition_id || null, image_url, status, id]
+        [title, description, price, category || null, condition || null, image_url, status, id]
       );
       return res.status(200).json({ success: true, data: result.rows[0] });
     }

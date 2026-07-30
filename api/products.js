@@ -15,8 +15,8 @@ module.exports = async (req, res) => {
       const result = await query(
         `SELECT p.*, c.name as category_name, cond.name as condition_name 
          FROM products p 
-         LEFT JOIN categories c ON p.category_id = c.id 
-         LEFT JOIN conditions cond ON p.condition_id = cond.id 
+         LEFT JOIN categories c ON p.category = c.id 
+         LEFT JOIN conditions cond ON p.condition = cond.id 
          WHERE p.id = $1 AND p.status = 'active'`,
         [id]
       );
@@ -39,12 +39,12 @@ module.exports = async (req, res) => {
 
     if (category) {
       sqlParams.push(category);
-      sqlConditions.push(`c.slug = $${sqlParams.length}`);
+      sqlConditions.push(`c.id = $${sqlParams.length}`);
     }
 
     if (condition) {
       sqlParams.push(condition);
-      sqlConditions.push(`cond.slug = $${sqlParams.length}`);
+      sqlConditions.push(`cond.id = $${sqlParams.length}`);
     }
 
     let orderBy = 'p.created_at DESC';
@@ -56,10 +56,10 @@ module.exports = async (req, res) => {
     const whereClause = sqlConditions.length ? `WHERE ${sqlConditions.join(' AND ')}` : '';
 
     const dataQuery = `
-      SELECT p.*, c.name as category_name, c.slug as category_slug, cond.name as condition_name, cond.slug as condition_slug 
+      SELECT p.*, c.name as category_name, c.id as category_slug, cond.name as condition_name, cond.id as condition_slug 
       FROM products p 
-      LEFT JOIN categories c ON p.category_id = c.id 
-      LEFT JOIN conditions cond ON p.condition_id = cond.id 
+      LEFT JOIN categories c ON p.category = c.id 
+      LEFT JOIN conditions cond ON p.condition = cond.id 
       ${whereClause} 
       ORDER BY ${orderBy} 
       LIMIT $${sqlParams.length + 1} OFFSET $${sqlParams.length + 2}`;
@@ -67,8 +67,8 @@ module.exports = async (req, res) => {
     const countQuery = `
       SELECT COUNT(*) as total 
       FROM products p 
-      LEFT JOIN categories c ON p.category_id = c.id 
-      LEFT JOIN conditions cond ON p.condition_id = cond.id 
+      LEFT JOIN categories c ON p.category = c.id 
+      LEFT JOIN conditions cond ON p.condition = cond.id 
       ${whereClause}`;
 
     const [dataResult, countResult] = await Promise.all([

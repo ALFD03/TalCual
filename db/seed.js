@@ -1,20 +1,18 @@
 // ============================================================
 // TAL CUAL · Seed script
 // Ejecutar: node db/seed.js
-// Requiere NEON_DATABASE_URL en .env
+// Requiere DATABASE_URL en .env
 // ============================================================
 require('dotenv').config();
-const { neon } = require('@neondatabase/serverless');
+const { query } = require('../lib/db');
 const { hashPassword } = require('../lib/auth');
-
-const sql = neon(process.env.NEON_DATABASE_URL || process.env.DATABASE_URL);
 
 async function seed() {
   console.log('🌱 Sembrando base de datos TAL CUAL...\n');
 
   // 1. Crear tablas
   console.log('📦 Creando tablas...');
-  await sql.unsafe(`
+  await query(`
     CREATE TABLE IF NOT EXISTS categories (
       id VARCHAR(50) PRIMARY KEY,
       name VARCHAR(100) NOT NULL,
@@ -70,7 +68,7 @@ async function seed() {
     ['cocina', 'Cocina', 4], ['accesorios', 'Accesorios', 5], ['libros', 'Libros', 6], ['decoracion', 'Decoración', 7]
   ];
   for (const [id, name, order] of cats) {
-    await sql`INSERT INTO categories (id, name, display_order) VALUES (${id}, ${name}, ${order}) ON CONFLICT (id) DO NOTHING`;
+    await query('INSERT INTO categories (id, name, display_order) VALUES ($1, $2, $3) ON CONFLICT (id) DO NOTHING', [id, name, order]);
   }
   console.log('   ✓ 7 categorías insertadas\n');
 
@@ -78,7 +76,7 @@ async function seed() {
   console.log('🏷️ Insertando condiciones...');
   const conds = [['nuevo', 'Nuevo'], ['como_nuevo', 'Como nuevo'], ['segunda_mano', 'Segunda mano']];
   for (const [id, name] of conds) {
-    await sql`INSERT INTO conditions (id, name) VALUES (${id}, ${name}) ON CONFLICT (id) DO NOTHING`;
+    await query('INSERT INTO conditions (id, name) VALUES ($1, $2) ON CONFLICT (id) DO NOTHING', [id, name]);
   }
   console.log('   ✓ 3 condiciones insertadas\n');
 
@@ -89,7 +87,7 @@ async function seed() {
   const adminPass = process.env.SEED_ADMIN_PASSWORD || 'talcual123';
   const hashed = hashPassword(adminPass);
   try {
-    await sql`INSERT INTO admin_users (name, email, password, role) VALUES (${adminName}, ${adminEmail}, ${hashed}, 'admin') ON CONFLICT (email) DO UPDATE SET password = EXCLUDED.password`;
+    await query('INSERT INTO admin_users (name, email, password, role) VALUES ($1, $2, $3, $4) ON CONFLICT (email) DO UPDATE SET password = EXCLUDED.password', [adminName, adminEmail, hashed, 'admin']);
     console.log(`   ✓ Admin creado: ${adminEmail} / ${adminPass}\n`);
   } catch (e) {
     console.log(`   ⚠️  Error: ${e.message}\n`);
@@ -109,10 +107,10 @@ async function seed() {
   ];
   for (const p of demo) {
     const ref = `TC-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
-    await sql`
-      INSERT INTO products (title, description, price, category, condition, status, reference, image_url)
-      VALUES (${p.title}, ${p.desc}, ${p.price}, ${p.cat}, ${p.cond}, 'active', ${ref}, '')
-    `;
+    await query(
+      'INSERT INTO products (title, description, price, category, condition, status, reference, image_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
+      [p.title, p.desc, p.price, p.cat, p.cond, 'active', ref, '']
+    );
   }
   console.log(`   ✓ ${demo.length} productos demo insertados\n`);
 

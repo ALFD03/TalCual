@@ -20,9 +20,9 @@
     "test": "echo \"No tests yet\" && exit 0"
   },
   "dependencies": {
-    "@neondatabase/serverless": "^1.1.0",
     "@vercel/blob": "^2.6.1",
     "bcryptjs": "^2.4.3",
+    "busboy": "^1.6.0",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.22.0"
   },

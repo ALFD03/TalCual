@@ -37,40 +37,62 @@ export const api = {
     const q = new URLSearchParams(params).toString();
     return request(`/products${q ? `?${q}` : ''}`);
   },
-  getProduct(id) { return request(`/products/${id}`); },
-  getCategories() { return request('/categories'); },
-  getConditions() { return request('/conditions'); },
+  getProduct(id) { return request(`/products?id=${id}`); },
+  getCategories() { return request('/meta?type=categories'); },
+  getConditions() { return request('/meta?type=conditions'); },
 
   // Pedidos (público)
   createOrder(payload) { return request('/orders', { method: 'POST', body: payload }); },
 
   // Auth admin
-  login(email, password) { return request('/auth/login', { method: 'POST', body: { email, password } }); },
-  me(token) { return request('/auth/me', { token }); },
+  login(email, password) { return request('/auth?action=login', { method: 'POST', body: { email, password } }); },
+  me(token) {
+    return request('/auth?action=me', {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+  },
 
   // Admin - productos
   listProductsAdmin(token, params = {}) {
     const q = new URLSearchParams(params).toString();
-    return request(`/admin/products${q ? `?${q}` : ''}`, { token });
+    return request(`/admin-products${q ? `?${q}` : ''}`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
   },
-  createProduct(token, payload) { return request('/admin/products', { method: 'POST', body: payload, token }); },
-  updateProduct(token, id, payload) { return request(`/admin/products/${id}`, { method: 'PUT', body: payload, token }); },
-  deleteProduct(token, id) { return request(`/admin/products/${id}`, { method: 'DELETE', token }); },
+  createProduct(token, payload) {
+    return request('/admin-products', { method: 'POST', body: payload, headers: { 'Authorization': `Bearer ${token}` } });
+  },
+  updateProduct(token, id, payload) {
+    return request(`/admin-products?id=${id}`, { method: 'PUT', body: payload, headers: { 'Authorization': `Bearer ${token}` } });
+  },
+  deleteProduct(token, id) {
+    return request(`/admin-products?id=${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
+  },
 
   // Admin - usuarios
-  listUsers(token) { return request('/admin/users', { token }); },
-  createUser(token, payload) { return request('/admin/users', { method: 'POST', body: payload, token }); },
-  updateUser(token, id, payload) { return request(`/admin/users/${id}`, { method: 'PUT', body: payload, token }); },
-  deleteUser(token, id) { return request(`/admin/users/${id}`, { method: 'DELETE', token }); },
+  listUsers(token) {
+    return request('/admin-users', { headers: { 'Authorization': `Bearer ${token}` } });
+  },
+  createUser(token, payload) {
+    return request('/admin-users', { method: 'POST', body: payload, headers: { 'Authorization': `Bearer ${token}` } });
+  },
+  updateUser(token, id, payload) {
+    return request(`/admin-users?id=${id}`, { method: 'PUT', body: payload, headers: { 'Authorization': `Bearer ${token}` } });
+  },
+  deleteUser(token, id) {
+    return request(`/admin-users?id=${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
+  },
 
   // Admin - pedidos
-  listOrders(token) { return request('/orders', { token }); },
+  listOrders(token) {
+    return request('/orders', { headers: { 'Authorization': `Bearer ${token}` } });
+  },
 
   // Upload a Vercel Blob
   upload(token, file, folder = 'products') {
     const fd = new FormData();
     fd.append('file', file);
     fd.append('folder', folder);
-    return request('/upload', { method: 'POST', body: fd, token });
+    return request('/upload', { method: 'POST', body: fd, headers: { 'Authorization': `Bearer ${token}` } });
   },
 };

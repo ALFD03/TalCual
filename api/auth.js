@@ -1,5 +1,5 @@
 const { query } = require('../lib/db');
-const { comparePassword, generateToken, verifyToken } = require('../lib/auth');
+const { comparePassword, signToken, verifyToken } = require('../lib/auth');
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -25,13 +25,13 @@ module.exports = async (req, res) => {
       }
 
       const user = result.rows[0];
-      const match = await comparePassword(password, user.password_hash);
+      const match = await comparePassword(password, user.password);
 
       if (!match) {
         return res.status(401).json({ success: false, message: 'Credenciales inválidas' });
       }
 
-      const token = generateToken({ id: user.id, email: user.email, role: user.role, name: user.name });
+      const token = signToken({ id: user.id, email: user.email, role: user.role, name: user.name });
 
       return res.status(200).json({
         success: true,

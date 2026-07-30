@@ -35,7 +35,7 @@ module.exports = async (req, res) => {
       const passHash = await hashPassword(password);
 
       const result = await query(
-        'INSERT INTO admin_users (name, email, password_hash, role) VALUES ($1, $2, $3, $4) RETURNING id, name, email, role',
+        'INSERT INTO admin_users (name, email, password, role) VALUES ($1, $2, $3, $4) RETURNING id, name, email, role',
         [name, email, passHash, role]
       );
       return res.status(201).json({ success: true, data: result.rows[0] });
@@ -46,7 +46,7 @@ module.exports = async (req, res) => {
 
       if (password && password.trim() !== '') {
         const passHash = await hashPassword(password);
-        await query('UPDATE admin_users SET password_hash = $1 WHERE id = $2', [passHash, id]);
+        await query('UPDATE admin_users SET password = $1 WHERE id = $2', [passHash, id]);
       }
 
       const result = await query(
