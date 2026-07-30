@@ -10,7 +10,7 @@ import './components/product-grid.js';
 import './components/category-pills.js';
 import './components/pagination-controls.js';
 
-let whatsappNumber = '584249039269';
+// let whatsappNumber = '584249039269';
 
 async function loadConfig() {
   try {

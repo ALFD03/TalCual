@@ -19,10 +19,9 @@
       <p>Resumen de la tienda TAL CUAL</p>
     </div>
     <div class="stat-grid" id="statsGrid">
-      <div class="stat-card"><span class="stat-card__icon material-symbols-outlined">inventory_2</span><p class="stat-card__label">Productos</p><p class="stat-card__value" id="statProducts">-</p></div>
-      <div class="stat-card" style="border-top-color: var(--tc-secondary);"><span class="stat-card__icon material-symbols-outlined" style="color: var(--tc-secondary);">shopping_bag</span><p class="stat-card__label">Pedidos</p><p class="stat-card__value" id="statOrders">-</p></div>
-      <div class="stat-card" style="border-top-color: var(--tc-cta);"><span class="stat-card__icon material-symbols-outlined" style="color: var(--tc-cta);">people</span><p class="stat-card__label">Usuarios Admin</p><p class="stat-card__value" id="statUsers">-</p></div>
-      <div class="stat-card" style="border-top-color: var(--tc-whatsapp);"><span class="stat-card__icon material-symbols-outlined" style="color: var(--tc-whatsapp);">payments</span><p class="stat-card__label">Ventas totales</p><p class="stat-card__value" id="statSales">$0</p></div>
+      <a href="/admin/catalogo" class="stat-card" style="text-decoration:none; display:block;"><span class="stat-card__icon material-symbols-outlined">inventory_2</span><p class="stat-card__label">Productos</p><p class="stat-card__value" id="statProducts">-</p></a>
+      <a href="/admin/categorias" class="stat-card" style="text-decoration:none; display:block; border-top-color: var(--tc-cta);"><span class="stat-card__icon material-symbols-outlined" style="color: var(--tc-cta);">category</span><p class="stat-card__label">Categorías</p><p class="stat-card__value" id="statCategories">-</p></a>
+      <a href="/admin/usuarios" class="stat-card" style="text-decoration:none; display:block; border-top-color: var(--tc-secondary);"><span class="stat-card__icon material-symbols-outlined" style="color: var(--tc-secondary);">people</span><p class="stat-card__label">Usuarios Admin</p><p class="stat-card__value" id="statUsers">-</p></a>
     </div>
   </main>
   <script type="module" src="/frontend/scripts/admin.js"></script>

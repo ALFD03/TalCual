@@ -9,16 +9,18 @@ module.exports = async (req, res) => {
 
   try {
     if (req.method === 'POST') {
-      const { customer_name, customer_phone, items, total } = req.body || {};
+      const { customer, items, total } = req.body || {};
+      const customer_name = customer?.name || req.body.customer_name || '';
+      const customer_note = customer?.note || '';
 
-      if (!customer_name || !items || !items.length) {
+      if (!items || !items.length) {
         return res.status(400).json({ success: false, message: 'Datos incompletos para la orden' });
       }
 
       const result = await query(
-        `INSERT INTO orders (customer_name, customer_phone, items, total, status) 
+        `INSERT INTO orders (customer_name, customer_note, items, total, status) 
          VALUES ($1, $2, $3, $4, 'pending') RETURNING *`,
-        [customer_name, customer_phone || '', JSON.stringify(items), total || 0]
+        [customer_name, customer_note, JSON.stringify(items), total || 0]
       );
 
       return res.status(201).json({ success: true, data: result.rows[0] });

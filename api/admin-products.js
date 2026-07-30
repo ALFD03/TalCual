@@ -54,23 +54,23 @@ module.exports = async (req, res) => {
 
     // CREAR
     if (req.method === 'POST') {
-      const { title, description, price, category, condition, image_url, status = 'active' } = req.body || {};
+      const { title, description, price, category, condition, image_url, status = 'active', type, owner_name, owner_contact } = req.body || {};
       const result = await query(
-        `INSERT INTO products (title, description, price, category, condition, image_url, status)
-         VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
-        [title, description, price, category || null, condition || null, image_url || '', status]
+        `INSERT INTO products (title, description, price, category, condition, image_url, status, type, owner_name, owner_contact)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,
+        [title, description, price, category || null, condition || null, image_url || '', status, type || 'regular', owner_name || '', owner_contact || '']
       );
       return res.status(201).json({ success: true, data: result.rows[0] });
     }
 
     // ACTUALIZAR
     if (req.method === 'PUT' && id) {
-      const { title, description, price, category, condition, image_url, status } = req.body || {};
+      const { title, description, price, category, condition, image_url, status, type, owner_name, owner_contact } = req.body || {};
       const result = await query(
         `UPDATE products 
-         SET title = $1, description = $2, price = $3, category = $4, condition = $5, image_url = $6, status = $7, updated_at = NOW()
-         WHERE id = $8 RETURNING *`,
-        [title, description, price, category || null, condition || null, image_url, status, id]
+         SET title = $1, description = $2, price = $3, category = $4, condition = $5, image_url = $6, status = $7, type = $8, owner_name = $9, owner_contact = $10, updated_at = NOW()
+         WHERE id = $11 RETURNING *`,
+        [title, description, price, category || null, condition || null, image_url, status, type || 'regular', owner_name || '', owner_contact || '', id]
       );
       return res.status(200).json({ success: true, data: result.rows[0] });
     }

@@ -1,4 +1,4 @@
-import { getCart, addToCart, setQty, removeItem, checkoutWhatsApp, loadConfig } from '../services/cart.js';
+import { getCart, addToCart, setQty, removeItem, clearCart, checkoutWhatsApp, loadConfig } from '../services/cart.js';
 import { formatPrice, conditionLabel } from '../services/format.js';
 import { toast } from './toast-notif.js';
 
@@ -30,7 +30,7 @@ class CartDrawer extends HTMLElement {
             <div class="cart-summary__total"><span class="cart-summary__total-label">Total</span><span class="cart-summary__total-value" data-total>$0.00</span></div>
           </div>
           <div class="field" style="margin-bottom: 12px;">
-            <input class="input" id="custName" type="text" placeholder="Tu nombre (opcional)" />
+            <input class="input" id="custName" type="text" placeholder="Nombre y Apellido" />
           </div>
           <div class="field" style="margin-bottom: 12px;">
             <textarea class="textarea" id="custNote" rows="2" placeholder="Nota sobre el pedido (opcional)"></textarea>
@@ -48,6 +48,7 @@ class CartDrawer extends HTMLElement {
     `;
     this.querySelectorAll('[data-close]').forEach((el) => el.addEventListener('click', () => this.close()));
     this.querySelector('#checkoutBtn').addEventListener('click', () => this.checkout());
+    document.addEventListener('cart:checkout-complete', () => this.closeAndClear());
     document.addEventListener('cart:open', () => this.open());
     document.addEventListener('cart:change', () => this.render());
     this.render();
@@ -107,18 +108,7 @@ class CartDrawer extends HTMLElement {
           </div>
         </div>
       </div>
-    `).join('') + `
-      <div class="card" style="background: var(--tc-surface-lowest); border-radius: var(--tc-radius-lg); padding: var(--tc-sp-lg); box-shadow: var(--tc-shadow-soft);">
-        <h4 style="border-bottom: 1px solid var(--tc-outline-variant); padding-bottom: 6px; margin-bottom: 10px; color: var(--tc-secondary);">Datos para el pedido</h4>
-        <div class="field" style="margin-bottom: 10px;"><label class="field__label" for="customerName">Nombre del Cliente</label><input class="input" id="customerName" placeholder="Ej: María Pérez" type="text"/></div>
-        <div class="field"><label class="field__label" for="orderNote">Nota (opcional)</label><textarea class="textarea" id="orderNote" rows="2" style="min-height: 60px;" placeholder="Tallas, colores específicos o dudas..."></textarea></div>
-      </div>
-      <div class="cart-summary">
-        <div class="cart-summary__row"><span>Subtotal (${count} ${count === 1 ? 'artículo' : 'artículos'})</span><span>${formatPrice(total)}</span></div>
-        <div class="cart-summary__row"><span>Costo de envío</span><span style="color: var(--tc-text-muted); font-size: 13px; font-style: italic;">A coordinar</span></div>
-        <div class="cart-summary__total"><span class="cart-summary__total-label">Total</span><span class="cart-summary__total-value">${formatPrice(total)}</span></div>
-      </div>
-    `;
+    `).join('');
 
     body.querySelectorAll('.cart-item').forEach((el) => {
       const id = el.dataset.id;
@@ -138,19 +128,25 @@ class CartDrawer extends HTMLElement {
   }
 
   async checkout() {
-    const name = this.querySelector('[data-body] #customerName')?.value?.trim() || '';
-    const note = this.querySelector('[data-body] #orderNote')?.value?.trim() || '';
+    const name = this.querySelector('#custName')?.value?.trim() || '';
+    const note = this.querySelector('#custNote')?.value?.trim() || '';
     const { count } = getCart();
     if (count === 0) { toast('Tu carrito está vacío'); return; }
     this.querySelector('#checkoutBtn').disabled = true;
     try {
       await checkoutWhatsApp({ name, note });
-      toast('Abriendo WhatsApp...');
+      clearCart();
+      toast('Pedido enviado. Abriendo WhatsApp...');
     } catch (e) {
       toast('Error al procesar el pedido');
     } finally {
       this.querySelector('#checkoutBtn').disabled = false;
     }
+  }
+
+  closeAndClear() {
+    this.close();
+    clearCart();
   }
 }
 customElements.define('cart-drawer', CartDrawer);

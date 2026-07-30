@@ -38,9 +38,35 @@
         </div>
         <div class="admin-card">
           <h2 class="admin-card__title">Imagen</h2>
-          <div style="display: flex; gap: var(--tc-sp-md); align-items: center; flex-wrap: wrap;">
-            <img id="editImagePreview" style="width:120px; height:120px; border-radius: var(--tc-radius-md); object-fit: cover; background: var(--tc-surface-container);" src="" />
-            <div class="field" style="flex:1;"><label class="field__label">URL de imagen</label><input class="input" id="editImage" type="url" placeholder="https://..." /></div>
+          <div class="dropzone" id="editImageDropzone">
+            <div class="dropzone__icon"><span class="material-symbols-outlined" style="font-size: 32px;">cloud_upload</span></div>
+            <p class="dropzone__title">Arrastra y suelta la imagen aquí</p>
+            <p class="dropzone__hint">o haz clic para seleccionar. JPG/PNG. Máx 5MB.</p>
+            <input type="file" accept="image/*" style="display:none" id="editImageInput" />
+          </div>
+          <div style="margin-top: var(--tc-sp-md); text-align: center;" id="editImagePreviewWrap">
+            <img id="editImagePreview" style="max-height: 200px; border-radius: var(--tc-radius-md);" />
+            <div style="display:flex; gap:var(--tc-sp-sm); justify-content:center; margin-top:6px;">
+              <button type="button" class="btn btn-outline btn-sm" id="editImageRemove">Eliminar imagen</button>
+              <p style="color: var(--tc-text-muted); font-size: 13px; margin-top: 4px;" id="editImageUrlPreview"></p>
+            </div>
+          </div>
+          <input type="hidden" id="editImage" value="" />
+        </div>
+        <div class="admin-card">
+          <h2 class="admin-card__title">Tipo de Producto</h2>
+          <div class="form-grid">
+            <div class="field">
+              <label class="field__label">Tipo</label>
+              <select class="select" id="editType">
+                <option value="regular">Producto regular</option>
+                <option value="consigned">Consignado</option>
+              </select>
+            </div>
+            <div class="field" id="editOwnerFields" style="display:none;">
+              <div class="form-grid__full field"><label class="field__label">Nombre del dueño</label><input class="input" id="editOwnerName" placeholder="Nombre del consignador" /></div>
+              <div class="form-grid__full field"><label class="field__label">Contacto del dueño</label><input class="input" id="editOwnerContact" placeholder="Teléfono / email" /></div>
+            </div>
           </div>
         </div>
         <div class="form-actions">

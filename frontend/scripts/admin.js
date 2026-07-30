@@ -78,11 +78,13 @@ if (statsGrid) {
   (async () => {
     try {
       const token = getToken();
-      const [prods, users] = await Promise.all([
+      const [prods, users, cats] = await Promise.all([
         api.listProductsAdmin(token).catch(() => ({ data: [] })),
         api.listUsers(token).catch(() => ({ data: [] })),
+        api.listCategoriesAdmin(token).catch(() => ({ data: [] })),
       ]);
       document.querySelector('#statProducts').textContent = (prods.data || []).length;
+      document.querySelector('#statCategories').textContent = (cats.data || []).length;
       document.querySelector('#statUsers').textContent = (users.data || []).length;
     } catch { /* ignore */ }
   })();
@@ -98,7 +100,7 @@ if (catalogTable) {
   async function loadCatalog() {
     const tbody = document.querySelector('#catalogBody');
     const pag = document.querySelector('#catalogPagination');
-    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--tc-text-muted);padding:40px;">Cargando...</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--tc-text-muted);padding:40px;">Cargando...</td></tr>';
     try {
       const token = getToken();
       const params = { page: currentPage, limit: '20', q: currentQuery };
@@ -106,7 +108,7 @@ if (catalogTable) {
       const res = await api.listProductsAdmin(token, params);
       const products = res.data || [];
       if (products.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--tc-text-muted);padding:40px;">No hay productos</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--tc-text-muted);padding:40px;">No hay productos</td></tr>';
         pag.innerHTML = '';
         return;
       }
@@ -117,6 +119,7 @@ if (catalogTable) {
           <td><span class="role-tag" style="background:var(--tc-surface-container);">${p.category || '-'}</span></td>
           <td class="tc-table__price">${formatPrice(p.price)}</td>
           <td><span class="status-pill ${p.status === 'active' ? 'active' : 'inactive'}"><span class="status-pill__dot"></span>${p.status === 'active' ? 'Activo' : p.status === 'sold' ? 'Vendido' : 'Inactivo'}</span></td>
+          <td><span class="role-tag" style="background:${p.type === 'consigned' ? 'rgba(217,115,40,0.2)' : 'var(--tc-surface-container)'}; color: ${p.type === 'consigned' ? 'var(--tc-cta)' : 'var(--tc-on-surface-variant)'};">${p.type === 'consigned' ? 'Consignado' : 'Regular'}</span></td>
           <td class="tc-table__actions">
             <a href="/admin/productos/${p.id}" class="tc-table__action-btn" title="Editar"><span class="material-symbols-outlined">edit</span></a>
             <button class="tc-table__action-btn danger" data-del="${p.id}" title="Eliminar"><span class="material-symbols-outlined">delete</span></button>
@@ -155,7 +158,7 @@ if (catalogTable) {
           } catch (err) { alert(err.message); }
         });
       });
-    } catch (err) { tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--tc-error);">Error: ${err.message}</td></tr>`; }
+    } catch (err) { tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:40px;color:var(--tc-error);">Error: ${err.message}</td></tr>`; }
   }
 
   // Filters
@@ -222,6 +225,15 @@ if (productForm) {
     }
   }
 
+  // Toggle owner fields for consigned
+  const prodType = document.querySelector('#prodType');
+  const prodOwnerFields = document.querySelector('#prodOwnerFields');
+  if (prodType) {
+    prodType.addEventListener('change', () => {
+      prodOwnerFields.style.display = prodType.value === 'consigned' ? 'block' : 'none';
+    });
+  }
+
   productForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = {
@@ -231,6 +243,9 @@ if (productForm) {
       description: document.querySelector('#prodDescription').value.trim(),
       condition: document.querySelector('[name="condition"]:checked')?.value || 'como_nuevo',
       image_url: hiddenInput.value,
+      type: (document.querySelector('#prodType')?.value || 'regular'),
+      owner_name: (document.querySelector('#prodOwnerName')?.value || '').trim(),
+      owner_contact: (document.querySelector('#prodOwnerContact')?.value || '').trim(),
     };
     if (!data.title || !data.price) { alert('Título y precio requeridos'); return; }
     try {
@@ -258,6 +273,55 @@ if (editForm) {
     loadProduct();
   }).catch(() => loadProduct());
 
+  // Image dropzone for edit
+  const editDropzone = document.querySelector('#editImageDropzone');
+  const editFileInput = document.querySelector('#editImageInput');
+  const editPreview = document.querySelector('#editImagePreview');
+  const editPreviewWrap = document.querySelector('#editImagePreviewWrap');
+  const editImageUrlPreview = document.querySelector('#editImageUrlPreview');
+  const editHiddenInput = document.querySelector('#editImage');
+
+  if (editDropzone && editFileInput) {
+    editDropzone.addEventListener('click', () => editFileInput.click());
+    editDropzone.addEventListener('dragover', (e) => { e.preventDefault(); editDropzone.classList.add('dragover'); });
+    editDropzone.addEventListener('dragleave', () => editDropzone.classList.remove('dragover'));
+    editDropzone.addEventListener('drop', (e) => {
+      e.preventDefault(); editDropzone.classList.remove('dragover');
+      if (e.dataTransfer.files[0]) handleEditFile(e.dataTransfer.files[0]);
+    });
+    editFileInput.addEventListener('change', () => { if (editFileInput.files[0]) handleEditFile(editFileInput.files[0]); });
+  }
+
+  async function handleEditFile(file) {
+    if (file.size > 5 * 1024 * 1024) { alert('Máximo 5MB'); return; }
+    const token = getToken();
+    if (!token) { alert('Debes iniciar sesión'); return; }
+    try {
+      const res = await api.upload(token, file);
+      if (res.url) {
+        editHiddenInput.value = res.url;
+        editPreview.src = res.url;
+        editPreviewWrap.style.display = 'block';
+        editImageUrlPreview.textContent = res.url;
+      }
+    } catch (err) { alert('Error al subir imagen: ' + err.message); }
+  }
+
+  document.querySelector('#editImageRemove')?.addEventListener('click', () => {
+    editHiddenInput.value = '';
+    editPreview.src = '/frontend/assets/product-placeholder.svg';
+    editImageUrlPreview.textContent = '';
+  });
+
+  // Toggle owner fields for consigned
+  const editType = document.querySelector('#editType');
+  const editOwnerFields = document.querySelector('#editOwnerFields');
+  if (editType) {
+    editType.addEventListener('change', () => {
+      editOwnerFields.style.display = editType.value === 'consigned' ? 'block' : 'none';
+    });
+  }
+
   async function loadProduct() {
     try {
       const res = await api.getProduct(productId);
@@ -267,18 +331,22 @@ if (editForm) {
       document.querySelector('#editPrice').value = p.price || '';
       document.querySelector('#editDescription').value = p.description || '';
       document.querySelector('#editStatus').value = p.status || 'active';
-      document.querySelector('#editImage').value = p.image_url || '';
-      document.querySelector('#editImagePreview').src = p.image_url || '/frontend/assets/product-placeholder.svg';
+      editHiddenInput.value = p.image_url || '';
+      editPreview.src = p.image_url || '/frontend/assets/product-placeholder.svg';
+      editPreviewWrap.style.display = 'block';
+      editImageUrlPreview.textContent = p.image_url || '';
+      if (editType) {
+        editType.value = p.type || 'regular';
+        editOwnerFields.style.display = p.type === 'consigned' ? 'block' : 'none';
+      }
+      if (document.querySelector('#editOwnerName')) document.querySelector('#editOwnerName').value = p.owner_name || '';
+      if (document.querySelector('#editOwnerContact')) document.querySelector('#editOwnerContact').value = p.owner_contact || '';
       const conditionRadios = document.querySelectorAll('[name="editCondition"]');
       conditionRadios.forEach(r => { if (r.value === p.condition) r.checked = true; });
     } catch (err) {
       document.querySelector('[style*="max-width: 800px"] > div:first-child h1').textContent = 'Producto no encontrado';
     }
   }
-
-  document.querySelector('#editImage').addEventListener('input', () => {
-    document.querySelector('#editImagePreview').src = document.querySelector('#editImage').value || '/frontend/assets/product-placeholder.svg';
-  });
 
   editForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -289,7 +357,10 @@ if (editForm) {
       description: document.querySelector('#editDescription').value.trim(),
       status: document.querySelector('#editStatus').value,
       condition: document.querySelector('[name="editCondition"]:checked')?.value || null,
-      image_url: document.querySelector('#editImage').value.trim(),
+      image_url: editHiddenInput.value.trim(),
+      type: (document.querySelector('#editType')?.value || 'regular'),
+      owner_name: (document.querySelector('#editOwnerName')?.value || '').trim(),
+      owner_contact: (document.querySelector('#editOwnerContact')?.value || '').trim(),
     };
     try {
       await api.updateProduct(getToken(), productId, data);

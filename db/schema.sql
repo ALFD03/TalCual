@@ -27,6 +27,9 @@ CREATE TABLE IF NOT EXISTS products (
   image_url TEXT DEFAULT '',
   image_blob_url TEXT DEFAULT '',
   status VARCHAR(20) DEFAULT 'active',  -- active, inactive, sold
+  type VARCHAR(20) DEFAULT 'regular',    -- regular, consigned
+  owner_name VARCHAR(255) DEFAULT '',
+  owner_contact VARCHAR(255) DEFAULT '',
   reference VARCHAR(50) DEFAULT '',
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()

@@ -49,6 +49,22 @@
           </div>
           <input type="hidden" id="prodImage" value="" />
         </div>
+        <div class="admin-card">
+          <h2 class="admin-card__title">Tipo de Producto</h2>
+          <div class="form-grid">
+            <div class="field">
+              <label class="field__label">Tipo</label>
+              <select class="select" id="prodType">
+                <option value="regular">Producto regular</option>
+                <option value="consigned">Consignado</option>
+              </select>
+            </div>
+            <div class="field" id="prodOwnerFields" style="display:none;">
+              <div class="form-grid__full field"><label class="field__label">Nombre del dueño</label><input class="input" id="prodOwnerName" placeholder="Nombre del consignador" /></div>
+              <div class="form-grid__full field"><label class="field__label">Contacto del dueño</label><input class="input" id="prodOwnerContact" placeholder="Teléfono / email" /></div>
+            </div>
+          </div>
+        </div>
         <div class="form-actions">
           <a href="/admin/catalogo" class="btn btn-ghost">Cancelar</a>
           <button class="btn btn-cta" type="submit"><span class="material-symbols-outlined">save</span> Guardar Producto</button>
