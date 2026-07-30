@@ -32,6 +32,9 @@ async function seed() {
       image_url TEXT DEFAULT '',
       image_blob_url TEXT DEFAULT '',
       status VARCHAR(20) DEFAULT 'active',
+      type VARCHAR(20) DEFAULT 'regular',
+      owner_name VARCHAR(255) DEFAULT '',
+      owner_contact VARCHAR(255) DEFAULT '',
       reference VARCHAR(50) DEFAULT '',
       created_at TIMESTAMPTZ DEFAULT NOW(),
       updated_at TIMESTAMPTZ DEFAULT NOW()
@@ -108,8 +111,8 @@ async function seed() {
   for (const p of demo) {
     const ref = `TC-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
     await query(
-      'INSERT INTO products (title, description, price, category, condition, status, reference, image_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
-      [p.title, p.desc, p.price, p.cat, p.cond, 'active', ref, '']
+      'INSERT INTO products (title, description, price, category, condition, status, type, reference, image_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
+      [p.title, p.desc, p.price, p.cat, p.cond, 'active', 'regular', ref, '']
     );
   }
   console.log(`   ✓ ${demo.length} productos demo insertados\n`);
