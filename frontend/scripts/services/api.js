@@ -83,6 +83,20 @@ export const api = {
     return request(`/admin-users?id=${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
   },
 
+  // Admin - categorías
+  listCategoriesAdmin(token) {
+    return request('/admin-categories', { headers: { 'Authorization': `Bearer ${token}` } });
+  },
+  createCategory(token, payload) {
+    return request('/admin-categories', { method: 'POST', body: payload, headers: { 'Authorization': `Bearer ${token}` } });
+  },
+  updateCategory(token, id, payload) {
+    return request(`/admin-categories?id=${id}`, { method: 'PUT', body: payload, headers: { 'Authorization': `Bearer ${token}` } });
+  },
+  deleteCategory(token, id) {
+    return request(`/admin-categories?id=${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
+  },
+
   // Admin - pedidos
   listOrders(token) {
     return request('/orders', { headers: { 'Authorization': `Bearer ${token}` } });

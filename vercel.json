@@ -22,6 +22,7 @@
     { "source": "/admin/productos/:path", "destination": "/frontend/admin/producto-editar.html" },
     { "source": "/admin/usuarios/nuevo", "destination": "/frontend/admin/usuario-nuevo.html" },
     { "source": "/admin/usuarios/:path", "destination": "/frontend/admin/usuario-editar.html" },
+    { "source": "/admin/categorias", "destination": "/frontend/admin/categorias.html" },
     { "source": "/admin/usuarios", "destination": "/frontend/admin/usuarios.html" },
     { "source": "/((?!api|frontend|Referencia|node_modules).*)", "destination": "/frontend/pages/inicio.html" }
   ],

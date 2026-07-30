@@ -32,6 +32,7 @@ class AdminTopbar extends HTMLElement {
             <nav class="admin-nav">
               <a class="admin-nav__link ${page === 'dashboard' ? 'active' : ''}" href="/admin"><span class="material-symbols-outlined">dashboard</span> Dashboard</a>
               <a class="admin-nav__link ${page === 'catalogo' ? 'active' : ''}" href="/admin/catalogo"><span class="material-symbols-outlined">inventory_2</span> Catálogo</a>
+              <a class="admin-nav__link ${page === 'categorias' ? 'active' : ''}" href="/admin/categorias"><span class="material-symbols-outlined">category</span> Categorías</a>
               <a class="admin-nav__link ${page === 'usuarios' ? 'active' : ''}" href="/admin/usuarios"><span class="material-symbols-outlined">people</span> Usuarios</a>
             </nav>
           </div>
@@ -381,4 +382,103 @@ if (userEditForm) {
       window.location.href = '/admin/usuarios';
     } catch (err) { alert(err.message); }
   });
+}
+
+// ---- Categories Management ----
+const categoriesTable = document.querySelector('#categoriesTable');
+if (categoriesTable) {
+  const modal = document.querySelector('#categoryModal');
+  const form = document.querySelector('#categoryForm');
+  const modalTitle = document.querySelector('#modalTitle');
+  const editId = document.querySelector('#editId');
+  const catId = document.querySelector('#catId');
+  const catName = document.querySelector('#catName');
+  const catOrder = document.querySelector('#catOrder');
+  const tbody = document.querySelector('#categoriesBody');
+
+  function openModal(cat = null) {
+    if (cat) {
+      modalTitle.textContent = 'Editar Categoría';
+      editId.value = cat.id;
+      catId.value = cat.id;
+      catId.readOnly = true;
+      catName.value = cat.name;
+      catOrder.value = cat.display_order || 0;
+    } else {
+      modalTitle.textContent = 'Nueva Categoría';
+      editId.value = '';
+      catId.value = '';
+      catId.readOnly = false;
+      catName.value = '';
+      catOrder.value = '0';
+    }
+    modal.style.display = 'flex';
+    catId.focus();
+  }
+
+  function closeModal() { modal.style.display = 'none'; }
+
+  document.querySelector('#addCategoryBtn').addEventListener('click', () => openModal());
+  document.querySelector('#modalClose').addEventListener('click', closeModal);
+  document.querySelector('#modalCancel').addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const token = getToken();
+    const payload = { id: catId.value.trim(), name: catName.value.trim(), display_order: parseInt(catOrder.value) || 0 };
+    try {
+      if (editId.value) {
+        await api.updateCategory(token, editId.value, payload);
+      } else {
+        await api.createCategory(token, payload);
+      }
+      closeModal();
+      loadCategories();
+    } catch (err) { alert(err.message); }
+  });
+
+  async function loadCategories() {
+    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--tc-text-muted);padding:40px;">Cargando...</td></tr>';
+    try {
+      const res = await api.listCategoriesAdmin(getToken());
+      const cats = res.data || [];
+      if (cats.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--tc-text-muted);padding:40px;">No hay categorías</td></tr>';
+        return;
+      }
+      tbody.innerHTML = cats.map(c => `
+        <tr>
+          <td><code style="background:var(--tc-surface-container);padding:2px 8px;border-radius:var(--tc-radius-sm);font-size:13px;">${c.id}</code></td>
+          <td><strong>${c.name}</strong></td>
+          <td>${c.display_order}</td>
+          <td class="tc-table__actions">
+            <button class="tc-table__action-btn" data-edit="${c.id}" title="Editar"><span class="material-symbols-outlined">edit</span></button>
+            <button class="tc-table__action-btn danger" data-del="${c.id}" title="Eliminar"><span class="material-symbols-outlined">delete</span></button>
+          </td>
+        </tr>
+      `).join('');
+
+      tbody.querySelectorAll('[data-edit]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const c = cats.find(x => x.id === btn.dataset.edit);
+          if (c) openModal(c);
+        });
+      });
+
+      tbody.querySelectorAll('[data-del]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          if (!confirm('¿Eliminar esta categoría?')) return;
+          try {
+            await api.deleteCategory(getToken(), btn.dataset.del);
+            loadCategories();
+          } catch (err) { alert(err.message); }
+        });
+      });
+    } catch (err) {
+      tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;padding:40px;color:var(--tc-error);">Error: ${err.message}</td></tr>`;
+    }
+  }
+
+  loadCategories();
 }
