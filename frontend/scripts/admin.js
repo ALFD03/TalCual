@@ -126,7 +126,18 @@ if (catalogTable) {
           </td>
         </tr>
       `).join('');
-      // Pagination
+      // Delete handlers (delegación) - ANTES del early return de paginación
+      tbody.onclick = (e) => {
+        const btn = e.target.closest('[data-del]');
+        if (!btn) return;
+        e.preventDefault();
+        if (!confirm('¿Eliminar este producto?')) return;
+        api.deleteProduct(getToken(), btn.dataset.del).then(() => {
+          loadCatalog();
+        }).catch((err) => {
+          alert(err.message);
+        });
+      };
       const total = res.pagination?.total || 0;
       const perPage = 20;
       const totalPages = Math.ceil(total / perPage);
@@ -148,18 +159,6 @@ if (catalogTable) {
           if (p >= 1 && p <= totalPages) { currentPage = p; loadCatalog(); }
         });
       });
-      // Delete handlers (delegación)
-      tbody.onclick = (e) => {
-        const btn = e.target.closest('[data-del]');
-        if (!btn) return;
-        e.preventDefault();
-        if (!confirm('¿Eliminar este producto?')) return;
-        api.deleteProduct(getToken(), btn.dataset.del).then(() => {
-          loadCatalog();
-        }).catch((err) => {
-          alert(err.message);
-        });
-      };
     } catch (err) { tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:40px;color:var(--tc-error);">Error: ${err.message}</td></tr>`; }
   }
 
