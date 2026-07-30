@@ -33,6 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // WhatsApp links on vender/nosotros pages
   const wa = document.querySelector('#whatsappVender, #whatsappNosotros');
   if (wa) {
-    wa.href = `https://wa.me/584249039269?text=${encodeURIComponent('Hola TAL CUAL, quiero más información sobre consignación.')}`;
+    wa.href = `https://wa.me/${process.env.WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola TAL CUAL, quiero más información sobre consignación.')}`;
   }
 });

@@ -79,10 +79,10 @@ if (statsGrid) {
     try {
       const token = getToken();
       const [prods, users] = await Promise.all([
-        api.listProductsAdmin(token, { limit: '1' }).catch(() => ({ pagination: { total: 0 } })),
+        api.listProductsAdmin(token).catch(() => ({ data: [] })),
         api.listUsers(token).catch(() => ({ data: [] })),
       ]);
-      document.querySelector('#statProducts').textContent = prods.pagination?.total || 0;
+      document.querySelector('#statProducts').textContent = (prods.data || []).length;
       document.querySelector('#statUsers').textContent = (users.data || []).length;
     } catch { /* ignore */ }
   })();
@@ -175,14 +175,16 @@ if (catalogTable) {
 const productForm = document.querySelector('#productForm');
 if (productForm) {
   // Load categories
-  api.getCategories().then(cats => {
+  api.getCategories().then(res => {
+    const cats = res.data || [];
     const sel = document.querySelector('#prodCategory');
-    if (Array.isArray(cats)) cats.forEach(c => { sel.innerHTML += `<option value="${c.id}">${c.name}</option>`; });
+    cats.forEach(c => { sel.innerHTML += `<option value="${c.id}">${c.name}</option>`; });
   }).catch(() => {});
   // Load conditions
-  api.getConditions().then(conds => {
+  api.getConditions().then(res => {
+    const conds = res.data || [];
     const group = document.querySelector('#conditionGroup');
-    if (Array.isArray(conds)) group.innerHTML = conds.map(c => `
+    group.innerHTML = conds.map(c => `
       <label class="radio-item"><input type="radio" name="condition" value="${c.id}" ${c.id === 'como_nuevo' ? 'checked' : ''} /><span class="radio-item__label">${c.name}</span></label>
     `).join('');
   }).catch(() => {});
@@ -244,11 +246,13 @@ if (editForm) {
   const productId = window.location.pathname.split('/').pop();
 
   // Load categories and conditions first
-  Promise.all([api.getCategories(), api.getConditions()]).then(([cats, conds]) => {
+  Promise.all([api.getCategories(), api.getConditions()]).then(([catRes, condRes]) => {
+    const cats = catRes.data || [];
+    const conds = condRes.data || [];
     const catSel = document.querySelector('#editCategory');
-    if (Array.isArray(cats)) cats.forEach(c => { catSel.innerHTML += `<option value="${c.id}">${c.name}</option>`; });
+    cats.forEach(c => { catSel.innerHTML += `<option value="${c.id}">${c.name}</option>`; });
     const condGroup = document.querySelector('#editConditionGroup');
-    if (Array.isArray(conds)) condGroup.innerHTML = conds.map(c => `
+    condGroup.innerHTML = conds.map(c => `
       <label class="radio-item"><input type="radio" name="editCondition" value="${c.id}" /><span class="radio-item__label">${c.name}</span></label>
     `).join('');
     loadProduct();
@@ -256,7 +260,8 @@ if (editForm) {
 
   async function loadProduct() {
     try {
-      const p = await api.getProduct(productId);
+      const res = await api.getProduct(productId);
+      const p = res.data || res;
       document.querySelector('#editTitle').value = p.title || '';
       document.querySelector('#editCategory').value = p.category || '';
       document.querySelector('#editPrice').value = p.price || '';
