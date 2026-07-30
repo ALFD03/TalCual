@@ -26,7 +26,7 @@ class SiteFooter extends HTMLElement {
             <h4 style="color: var(--tc-primary); font-weight: 700;">Contacto</h4>
             <a href="#" data-whatsapp-link class="btn btn-whatsapp" style="align-self: flex-start; margin-bottom: var(--tc-sp-sm);">
               <span class="material-symbols-outlined" style="font-size: 20px;">chat</span>
-              WhatsApp: 0424-9039269
+              WhatsApp
             </a>
             <a href="#" style="color: var(--tc-on-surface-variant); font-size: 14px;">Política de Devoluciones</a>
           </div>
