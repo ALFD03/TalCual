@@ -10,8 +10,22 @@ import './components/product-grid.js';
 import './components/category-pills.js';
 import './components/pagination-controls.js';
 
+let whatsappNumber = '584249039269';
+
+async function loadConfig() {
+  try {
+    const res = await fetch('/api/meta?type=config');
+    if (res.ok) {
+      const json = await res.json();
+      if (json.data?.whatsapp_number) whatsappNumber = json.data.whatsapp_number;
+    }
+  } catch (_) { /* fallback hardcodeado */ }
+}
+
 // Catálogo page: search, sort, condition filters
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadConfig();
+
   const search = document.querySelector('[data-catalog-search]');
   const sort = document.querySelector('[data-catalog-sort]');
   const condition = document.querySelector('[data-catalog-condition]');
@@ -33,6 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // WhatsApp links on vender/nosotros pages
   const wa = document.querySelector('#whatsappVender, #whatsappNosotros');
   if (wa) {
-    wa.href = `https://wa.me/${process.env.WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola TAL CUAL, quiero más información sobre consignación.')}`;
+    wa.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Hola TAL CUAL, quiero más información sobre consignación.')}`;
   }
 });

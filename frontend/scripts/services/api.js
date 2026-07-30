@@ -40,6 +40,7 @@ export const api = {
   getProduct(id) { return request(`/products?id=${id}`); },
   getCategories() { return request('/meta?type=categories'); },
   getConditions() { return request('/meta?type=conditions'); },
+  getConfig() { return request('/meta?type=config'); },
 
   // Pedidos (público)
   createOrder(payload) { return request('/orders', { method: 'POST', body: payload }); },

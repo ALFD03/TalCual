@@ -4,14 +4,17 @@
 import { api } from './api.js';
 
 const STORAGE_KEY = 'talcual-cart-v1';
-const CONFIG_URL = '/api/config';
+const CONFIG_URL = '/api/meta?type=config';
 
 let config = { whatsappNumber: '584249039269' };
 
 export async function loadConfig() {
   try {
     const r = await fetch(CONFIG_URL);
-    if (r.ok) config = await r.json();
+    if (r.ok) {
+      const json = await r.json();
+      if (json.data?.whatsapp_number) config.whatsappNumber = json.data.whatsapp_number;
+    }
   } catch (_) { /* fallback por defecto */ }
   return config;
 }
